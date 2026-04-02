@@ -13,10 +13,36 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 ## [Unreleased]
 > Items staged for the next release. Move to a versioned section upon commit.
 
-- [ ] MRC stubs for Categories 16–20 (encryption, supply chain, DR, documentation, ATO)
 - [ ] Filled `.docx` MRC cards for all category leads
 - [ ] ISSM proposal template update to reflect JSIG non-tailorable control language
 - [ ] `generate-mrc.js` update to include JSIG fields (non-tailorable flag, ISSM auth ref, CCB CR number, SAPF entry approval)
+
+---
+
+## [2.0.0] — 2026-04-02
+### Added
+**SA-BASELINE.md** — New standalone operational baseline document for System Administrators in an air-gapped SAP environment. This is a major structural addition (MAJOR version bump) establishing the authoritative daily operations reference for the library.
+
+**Contents:**
+- Air-gap environment overview: what air-gapped means operationally, constraints table, common boundary violations
+- **Shift Start Procedures** — pre-entry checklist, physical inspection, system access, initial 15-minute monitoring check
+- **Core Daily Checklist** — 29 tasks across Security Monitoring, Endpoint Protection (⚠️ AC-6(1)), Backup, System Health, Directory & Identity, Physical, and Air-Gap Media Log sections
+- **Shift End Procedures** — documentation, system state, handoff, and last-SA-out procedures
+- **Air-Gap Specific Tasks** — removable media control and accountability, AV definition update workflow (manual sneakernet), patch import workflow, log/artifact export workflow
+- **Incident Triggers** — three-tier escalation framework:
+  - Tier 1 (10 triggers): Stop work immediately / notify ISSM NOW — SC-28/SA-22/AC-6(1) non-tailorable failures, unknown devices, tamper seal breach, file integrity failure, unauthorized accounts, spillage, active intrusion indicators
+  - Tier 2 (10 triggers): Escalate to ISSM within 4 hours — failed logon thresholds, backup failures, RAID alerts, cert expiry, AD replication, NTP drift, log storage, unauthorized software, after-hours access, unsanctioned media import
+  - Tier 3 (5 triggers): Document and report at shift end
+- **Appendix A** — Step-by-step shift start (12 steps)
+- **Appendix B** — Step-by-step data transfer sneakernet: inbound (11 steps) and outbound (8 steps)
+- **Appendix C** — Step-by-step removable media sanitization (6 steps, covering re-use and destruction)
+- **Appendix D** — Step-by-step shift end and handoff (11 steps)
+- **Appendix E** — Escalation contact reference table (fillable)
+
+### Notes
+- All tasks in SA-BASELINE.md reference corresponding MRC IDs from the library
+- Designed to be handed to a new SA with no prior environment familiarity
+- Complements (does not replace) TECHNICAL_TASK_SCOPE.md
 
 ---
 
