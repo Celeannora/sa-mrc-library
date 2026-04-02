@@ -125,6 +125,11 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC-1001-DA | Daily Domain Controller Replication and Health Check | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-1002-MO | Monthly DNS Zone Integrity and DHCP Scope Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 | MRC-1003-QR | Quarterly Group Policy Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1004-WK | Weekly AD DS Health and Integrity Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1005-MO | Monthly AD CS Health and Certificate Authority Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1006-MO | Monthly AD FS Health and Token Configuration Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1007-MO | Monthly AD LDS Health and Instance Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1008-MO | Monthly AD RMS Health and Policy Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 

@@ -20,6 +20,36 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [1.4.0] — 2026-04-02
+### Added
+Five new JSIG-compliant MRC stubs for Category 10 — Identity & Directory Services, covering all five Active Directory role-based services:
+
+- `MRC-1004-WK_stub.md` — **AD DS** (Active Directory Domain Services) Weekly Health & Integrity Verification
+  - 14 procedure steps: dcdiag, repadmin, FSMO check, service verification, unauthorized account review, SYSVOL, GPO, lockout policy
+  - JSIG controls: IA-2, IA-4, IA-5, CM-6, AU-9, SC-20, AC-2
+  - Non-Compliance / Findings Log table + full sign-off block
+- `MRC-1005-MO_stub.md` — **AD CS** (Active Directory Certificate Services) Monthly CA Audit
+  - 14 procedure steps: CA service, SLC expiry, CRL publication, issued cert review, template audit, CDP accessibility, PKI health check
+  - JSIG controls: SC-12, SC-17, IA-5(2), CM-6, AU-9, IA-3
+  - CA expiry escalation trigger: notify ISSM if < 90 days remaining
+- `MRC-1006-MO_stub.md` — **AD FS** (Active Directory Federation Services) Monthly Token & Trust Audit
+  - 14 procedure steps: service check, token-signing/decryption cert expiry, Relying Party Trust audit, Claims Provider Trust review, endpoint audit, event log review, auth failure spike analysis
+  - JSIG controls: IA-2, IA-8, SC-8, SC-28, CM-6, AU-9
+  - Token cert escalation trigger: notify ISSM if < 30 days remaining
+- `MRC-1007-MO_stub.md` — **AD LDS** (Active Directory Lightweight Directory Services) Monthly Instance Audit
+  - 11 procedure steps: instance inventory, service health, ADSI Edit inspection, unauthorized object/account review, schema change detection, port exposure check
+  - JSIG controls: IA-2, IA-4, CM-6, AU-9, AC-3, SC-28
+  - AD LDS Instance Inventory table included
+- `MRC-1008-MO_stub.md` — **AD RMS** (Active Directory Rights Management Services) Monthly Health & Policy Audit
+  - 14 procedure steps: service/IIS health, SLC expiry, rights policy template audit, TUD/TPD trust audit, logging verification, functional content test, database backup check
+  - JSIG controls: SC-8, SC-28, AC-3, AC-16, CM-6, AU-9, SI-12
+  - SLC escalation trigger: notify ISSM if < 30 days remaining
+
+### Changed
+- `DOCUMENT_TRACKER.md` — 5 new MRC-10xx entries added (MRC-1004 through MRC-1008), all status 🟡 DRAFT with 🟢 stub
+
+---
+
 ## [1.3.0] — 2026-04-02
 ### Added
 - `MRC-0301-DA_Trellix_ePO.docx` — first fully built MRC card in the library:
