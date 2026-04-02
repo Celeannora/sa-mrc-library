@@ -247,7 +247,27 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 18 Disaster Recovery | 2 | 0 | 0 | 0 | 0% |
 | 19 Documentation & Records | 2 | 0 | 0 | 0 | 0% |
 | 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
-| **TOTAL** | **45** | **15** | **0** | **0** | **17%** |
+| **TOTAL** | **51** | **26** | **1** | **0** | **24%** |
+
+---
+
+## MRC Cards — Category 22: Security & Protection ⚠️ NON-TAILORABLE: SC-28 (BitLocker)
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2201-WK | Weekly BitLocker Encryption Status Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2202-MO | Monthly BranchCache Configuration and Content Integrity Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2203-MO | Monthly Device Health Attestation Status and TPM Integrity Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+
+---
+
+## MRC Cards — Category 21: Name & Address Services
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2101-DA | Daily DNS Server Health and Zone Integrity Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2102-WK | Weekly DHCP Server Health and Scope Utilization Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2103-MO | Monthly IPAM Audit and Address Space Reconciliation | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 

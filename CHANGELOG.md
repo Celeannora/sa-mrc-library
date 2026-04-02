@@ -14,9 +14,60 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 > Items staged for the next release. Move to a versioned section upon commit.
 
 - [ ] MRC stubs for Categories 16–20 (encryption, supply chain, DR, documentation, ATO)
-- [ ] Filled `.docx` MRC cards for all 20 category leads
+- [ ] Filled `.docx` MRC cards for all category leads
 - [ ] ISSM proposal template update to reflect JSIG non-tailorable control language
 - [ ] `generate-mrc.js` update to include JSIG fields (non-tailorable flag, ISSM auth ref, CCB CR number, SAPF entry approval)
+
+---
+
+## [1.6.0] — 2026-04-02
+### Added
+New **Category 22 — Security & Protection** with three JSIG-compliant MRC stubs covering BitLocker, BranchCache, and Device Health Attestation:
+
+- `categories/22-security-protection/README.md` — Category README with NON-TAILORABLE SC-28 warning for BitLocker, service risk table, JSIG control mapping (SC-28/28(1), CM-6/7, SI-7/7(1), IA-3, AU-9)
+- `MRC-2201-WK_stub.md` — **BitLocker** Weekly Encryption Status Verification
+  - 11 procedure steps: volume status, NON-TAILORABLE protection check, encryption method (AES-256), TPM validation, recovery key escrow to AD, MBAM reporting, GPO verification
+  - NON-TAILORABLE SC-28 stop-work language embedded in procedure and findings
+  - System Encryption Status Summary table
+  - JSIG controls: SC-28 [NON-TAILORABLE], SC-28(1), CM-6, AU-9
+- `MRC-2202-MO_stub.md` — **BranchCache** Monthly Configuration and Content Integrity Review
+  - 12 procedure steps: deployment inventory, unauthorized system check, mode verification, GPO audit, hosted cache server access control, service status, cache size limits, event log review
+  - BranchCache Deployment Inventory table
+  - Escalation trigger: BranchCache found on unauthorized systems → ISSM notified
+  - JSIG controls: CM-6, CM-7, SC-8, AC-3, AU-9, SI-7
+- `MRC-2203-MO_stub.md` — **Device Health Attestation** Monthly Status and TPM Integrity Review
+  - 13 procedure steps: TPM present/enabled/ready, TPM version check, Secure Boot, UEFI mode, BitLocker TPM-binding, TPM lockout, ELAM driver, DHA attestation reports, Secure Boot event log, firmware baseline
+  - Device Health Status Summary table
+  - Escalation triggers: TPM absent/disabled → ISSM; Secure Boot disabled → ISSM; DHA failure → ISSM
+  - JSIG controls: SI-7, SI-7(1), IA-3, CM-6, CM-7, SC-28, AU-9
+
+### Changed
+- `DOCUMENT_TRACKER.md` — Category 22 section added; Completion Summary updated: 48 → 51 MRCs, 23 → 26 stubs, 22% → 24%
+
+---
+
+## [1.5.0] — 2026-04-02
+### Added
+New **Category 21 — Name & Address Services** with three JSIG-compliant MRC stubs covering DNS Server, DHCP Server, and IPAM:
+
+- `categories/21-name-address-services/README.md` — Category README with JSIG control table (SC-20/21/22, CM-6/7, AU-8/9, AC-3, SI-12), risk-per-service breakdown, JSIG-specific notes
+- `MRC-2101-DA_stub.md` — **DNS Server** Daily Health and Zone Integrity Verification
+  - 12 procedure steps: service check, dcdiag /test:dns, zone audit vs. baseline, forwarder audit, conditional forwarder check, zone transfer restriction, resolution tests, event log review
+  - Escalation triggers: unauthorized forwarder → ISSM immediately; service failure → ISSM immediately
+  - JSIG controls: SC-20, SC-21, SC-22, CM-6, CM-7, AU-8, AU-9
+- `MRC-2102-WK_stub.md` — **DHCP Server** Weekly Health and Scope Utilization Review
+  - 12 procedure steps: service check, AD authorization check, scope baseline audit, utilization check (≥ 85% escalation), lease/MAC review, server options audit, failover check, audit logging verification
+  - Scope Utilization Summary table included
+  - Escalation triggers: scope ≥ 85% utilized → ISSM/ISSO; rogue DHCP server → ISSM immediately
+  - JSIG controls: CM-6, CM-7, AU-9, SC-22, SI-12, AC-3
+- `MRC-2103-MO_stub.md` — **IPAM** Monthly Audit and Address Space Reconciliation
+  - 14 procedure steps: IPAM health, DHCP/DNS sync verification, IP block audit, range utilization, unauthorized device check (MAC vs. baseline), DHCP/DNS cross-verification, stale record review, RBAC access audit
+  - Address Space Summary table included
+  - Escalation trigger: unauthorized device discovered → ISSM immediately
+  - JSIG controls: CM-6, CM-7, AC-3, AU-9, SC-20, SC-22, SI-12
+
+### Changed
+- `DOCUMENT_TRACKER.md` — Category 21 section added (3 new stubs); Completion Summary updated: 45 → 48 MRCs, 15 → 23 stubs, overall 17% → 22%
 
 ---
 
