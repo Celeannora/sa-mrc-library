@@ -20,6 +20,37 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [1.7.0] — 2026-04-02
+### Added
+New **Category 23 — File and Storage Services** with five JSIG-compliant MRC stubs:
+
+- `MRC-2301-WK_stub.md` — **File Server** Weekly Share and ACL Integrity Review
+  - 12 procedure steps: SMB share enumeration vs. baseline, unauthorized share detection, share-level ACL audit, NTFS ACL review, "Everyone" / overly-permissive access JSIG check, BitLocker volume encryption confirmation, open session review, object access audit policy, Security event log (IDs 5140/5145/5142)
+  - Share Inventory table; unauthorized share → ISSM immediately; "Everyone" on classified share → ISSM immediately
+  - JSIG controls: AC-3, AC-6, CM-6, CM-7, AU-9, SC-28
+- `MRC-2302-MO_stub.md` — **Storage Services** Monthly Health and LUN Integrity Audit
+  - 13 procedure steps: physical disk health, virtual disk / Storage Spaces, storage pool health, volume capacity (≥ 85% escalation), disk online status, iSCSI target session/ACL audit, BitLocker on data volumes, disk error event log (IDs 7/11/51)
+  - Volume/Disk Health Summary table; unauthorized iSCSI initiator → ISSM immediately
+  - JSIG controls: SC-28, CM-6, CM-7, CP-9, AU-9, AC-3
+- `MRC-2303-WK_stub.md` — **DFS Namespaces / Replication** Weekly Health Verification
+  - 12 procedure steps: namespace root audit, folder target online status, unauthorized target check, DFSR replication group audit, replication state (dfsrdiag), backlog check, SYSVOL DFSR health (AD critical), staging area quota, DFS/DFSR event logs (IDs 2104/2106/5002/5014)
+  - DFS Replication Group Status table with SYSVOL row pre-populated
+  - Escalation: SYSVOL replication error → ISSM immediately; replication failure > 4 hours → ISSM
+  - JSIG controls: CM-6, CM-7, CP-9, AU-9, SC-28, SI-7
+- `MRC-2304-MO_stub.md` — **FSRM** Monthly Quota and File Screen Compliance Review
+  - 12 procedure steps: service status, quota inventory vs. baseline, quota violations, file screen inventory vs. baseline, disabled screen detection JSIG check, template/file group integrity, storage report schedule, FSRM event log (IDs 8210/8215)
+  - FSRM Configuration Summary table; disabled screen on classified share → ISSM immediately
+  - JSIG controls: CM-6, CM-7, SI-12, AC-6, AU-9, CP-9
+- `MRC-2305-MO_stub.md` — **Data Deduplication** Monthly Health and Savings Verification
+  - 12 procedure steps: authorized volume check, dedup status/savings rate, last optimization time (> 48 hrs flag), failed job detection, job history, schedule verification, chunk store corruption count (zero required), dedup event log (IDs 2032/2034/2068), BitLocker on dedup volumes
+  - Dedup Volume Status Summary table; chunk store corruption → ISSM immediately
+  - JSIG controls: CM-6, CP-9, SC-28, AU-9, SI-7
+
+### Changed
+- `DOCUMENT_TRACKER.md` — Category 23 section added; Completion Summary updated: 51 → 56 MRCs, 26 → 31 stubs, 24% → 27%
+
+---
+
 ## [1.6.0] — 2026-04-02
 ### Added
 New **Category 22 — Security & Protection** with three JSIG-compliant MRC stubs covering BitLocker, BranchCache, and Device Health Attestation:

@@ -247,7 +247,19 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 18 Disaster Recovery | 2 | 0 | 0 | 0 | 0% |
 | 19 Documentation & Records | 2 | 0 | 0 | 0 | 0% |
 | 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
-| **TOTAL** | **51** | **26** | **1** | **0** | **24%** |
+| **TOTAL** | **56** | **31** | **1** | **0** | **27%** |
+
+---
+
+## MRC Cards — Category 23: File and Storage Services
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2301-WK | Weekly File Server Share and ACL Integrity Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2302-MO | Monthly Storage Services Health and LUN Integrity Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2303-WK | Weekly DFS Namespace and Replication Health Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2304-MO | Monthly FSRM Quota and File Screen Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2305-MO | Monthly Data Deduplication Health and Savings Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
