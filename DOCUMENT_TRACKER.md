@@ -26,7 +26,10 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | Changelog | `CHANGELOG.md` | v1.1.0 | 🟢 APPROVED | 2026-04-02 | SA | Living document |
 | Document Tracker | `DOCUMENT_TRACKER.md` | v1.0.0 | 🟢 APPROVED | 2026-04-02 | SA | This file |
 | Technical Task Scope | `TECHNICAL_TASK_SCOPE.md` | v1.0.0 | 🟢 APPROVED | 2026-04-02 | SA | Daily/Weekly/Monthly assignments |
-| SA Operational Baseline | `SA-BASELINE.md` | v1.0.0 | 🟡 DRAFT | 2026-04-02 | SA | Air-gap daily ops, shift procedures, incident triggers |
+| Baselines Index | `baselines/BASELINES-INDEX.md` | v1.0.0 | 🟡 DRAFT | 2026-04-02 | SA/ISSM | Role boundary matrix, escalation matrix, quick-reference |
+| SA Operational Baseline | `baselines/SA-BASELINE.md` | v2.0.0 | 🟡 DRAFT | 2026-04-02 | SA | SA-only: air-gap ops, shift procedures, incident triggers |
+| ISSO Operational Baseline | `baselines/ISSO-BASELINE.md` | v1.0.0 | 🟡 DRAFT | 2026-04-02 | ISSO | ISSO daily ops, ConMon, access mgmt, escalation thresholds |
+| Physical Security Baseline | `baselines/PHYSEC-BASELINE.md` | v1.0.0 | 🟡 DRAFT | 2026-04-02 | PHYSEC | Access control, inspections, visitor mgmt, alarm response |
 | ISSM Proposal Template | `issm-proposal/ISSM_Scheduled_Maintenance_Proposal_Template.docx` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG field update |
 | MRC Blank Template | `mrc-templates/blank/MRC_Template.docx` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG field update in .docx |
 | MRC Generation Script | `scripts/generate-mrc.js` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG field additions |

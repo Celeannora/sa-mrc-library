@@ -19,6 +19,20 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [2.1.0] — 2026-04-02
+### Added
+**Role-Separated Operational Baselines** — the original `SA-BASELINE.md` (root level) has been superseded by four role-specific documents in `baselines/`:
+
+- `baselines/BASELINES-INDEX.md` — master index: role boundary matrix, escalation matrix, daily interaction touchpoints, and quick-reference "who do I call?" table
+- `baselines/SA-BASELINE.md` — System Administrator baseline (v2.0, SA-only scope, air-gapped operations)
+- `baselines/ISSO-BASELINE.md` — ISSO baseline (v1.0): security monitoring oversight, access management, ConMon assembly, finding disposition, escalation thresholds, incident role
+- `baselines/PHYSEC-BASELINE.md` — Physical Security baseline (v1.0): access control, facility inspection, visitor processing, tamper seal program, alarm response
+
+### Changed
+- Root-level `SA-BASELINE.md` superseded — replaced by `baselines/SA-BASELINE.md` and companion role files
+
+---
+
 ## [2.0.0] — 2026-04-02
 ### Added
 **SA-BASELINE.md** — New standalone operational baseline document for System Administrators in an air-gapped SAP environment. This is a major structural addition (MAJOR version bump) establishing the authoritative daily operations reference for the library.
