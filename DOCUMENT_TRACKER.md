@@ -247,7 +247,28 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 18 Disaster Recovery | 2 | 0 | 0 | 0 | 0% |
 | 19 Documentation & Records | 2 | 0 | 0 | 0 | 0% |
 | 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
-| **TOTAL** | **56** | **31** | **1** | **0** | **27%** |
+| **TOTAL** | **63** | **38** | **1** | **0** | **31%** |
+
+---
+
+## MRC Cards — Category 25: Vulnerability Scanning and Tracking (Nessus)
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2501-MO | Monthly Nessus Credentialed Vulnerability Scan Execution and Results Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2502-MO | Monthly Vulnerability POA&M Update and Remediation Tracking | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2503-WK | Weekly Nessus Plugin Feed Currency and Scanner Health Check | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+
+---
+
+## MRC Cards — Category 24: Web Server (IIS)
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2401-WK | Weekly IIS Web Server Service Health and Site Inventory Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2402-MO | Monthly IIS HTTP Features Configuration and Directory Hardening Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2403-WK | Weekly IIS Security Configuration and Authentication Audit | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2404-MO | Monthly IIS Performance Settings and Logging Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 

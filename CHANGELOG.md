@@ -20,6 +20,61 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [1.9.0] — 2026-04-02
+### Added
+New **Category 25 — Vulnerability Scanning and Tracking (Nessus)** with three JSIG-compliant MRC stubs:
+
+- `MRC-2501-MO_stub.md` — **Monthly Nessus Credentialed Scan Execution and Results Review**
+  - 17 procedure steps: console login, plugin currency check, scan policy verification, Safe Checks confirmation, credential validation, scan launch, progress monitoring, credential success per host, coverage audit, report export (.pdf + .nessus), Critical/High findings review, prior-scan comparison, zero-results host investigation, ISSM notification, artifact retention
+  - Scan Coverage Summary table + New Critical/High Findings Log table
+  - Escalation: credential failure on any host → ISSM; scan coverage gap → ISSM; all new Critical/High → ISSM notification
+  - JSIG controls: RA-5, RA-5(1), RA-5(2), RA-5(5), CA-7, CM-6, SI-2, AU-9
+- `MRC-2502-MO_stub.md` — **Monthly Vulnerability POA&M Update and Remediation Tracking**
+  - 15 procedure steps: new Critical/High/Medium entry creation, open item milestone review, closure verification workflow (scan absent + patch evidence required), Risk Acceptance review, upcoming milestone flagging, ISSM submission
+  - POA&M Metrics Summary table + Overdue/Escalation Log table
+  - Escalation: overdue items (past milestone, no extension) → ISSM immediately
+  - JSIG controls: PM-4, RA-5, SI-2, SI-2(2), CA-7, AU-9
+- `MRC-2503-WK_stub.md` — **Weekly Nessus Plugin Feed Currency and Scanner Health Check**
+  - 12 procedure steps: console login, plugin set date check (≤ 7 days), online/offline update procedure, service status, disk space, license expiry check, scan policy audit vs. baseline, unauthorized scan detection, application log review
+  - Scanner Health Summary table
+  - Escalation: plugin feed > 7 days and cannot update (air-gap) → ISSM; license expiring within 30 days → ISSM; unauthorized scan run → ISSM; scan policy modified without CCB → ISSM
+  - JSIG controls: RA-5(1), RA-5(2), CM-6, AU-9, SI-2
+
+### Changed
+- `DOCUMENT_TRACKER.md` — Category 25 section added; Completion Summary updated: 60 → 63 MRCs, 35 → 38 stubs, 29% → 31%
+
+---
+
+## [1.8.0] — 2026-04-02
+### Added
+New **Category 24 — Web Server (IIS)** with four JSIG-compliant MRC stubs covering the four IIS role service groups:
+
+- `MRC-2401-WK_stub.md` — **IIS Web Server** Weekly Service Health and Site Inventory Review
+  - 13 procedure steps: W3SVC/WAS service check, site inventory vs. baseline, site state, binding audit, app pool inventory, pool state, pool identity accounts, .NET CLR versions, IIS event log (IDs 2268/2269)
+  - Site and Application Pool Inventory table
+  - Escalation: unauthorized site → ISSM; over-privileged pool identity → ISSM
+  - JSIG controls: CM-6, CM-7, AC-2, AC-17, AU-9, AU-12
+- `MRC-2402-MO_stub.md` — **IIS HTTP Features** Monthly Configuration and Directory Hardening Audit
+  - 12 procedure steps: directory browsing check, default document, WebDAV JSIG check, HTTP→HTTPS redirect, installed modules vs. baseline, handler audit, HTTP error response disclosure, server version header suppression, OPTIONS/WebDAV verb restriction
+  - HTTP Feature Status table per site
+  - Escalation: directory browsing enabled → ISSM; WebDAV enabled without authorization → ISSM immediately
+  - JSIG controls: CM-6, CM-7, SC-8, AC-3, AU-12
+- `MRC-2403-WK_stub.md` — **IIS Security** Weekly Configuration and Authentication Audit
+  - 14 procedure steps: anonymous auth check, JSIG anonymous auth check (restricted sites), Windows Auth verification, Basic Auth over HTTP check, HTTPS binding enforcement, TLS 1.0/1.1 disabled, SSL 2.0/3.0 disabled, request filtering enabled, double-dot blocking, high-bit character blocking, IP restrictions, auth failure spike review
+  - Authentication and TLS Status table per site
+  - Escalation: anonymous auth on restricted site → ISSM immediately; Basic Auth over HTTP → ISSM immediately; TLS 1.0/1.1 or SSL 2.0/3.0 enabled → ISSM
+  - JSIG controls: AC-3, AC-17, SC-8, SC-8(1), CM-6, CM-7, AU-9, AU-12, IA-2
+- `MRC-2404-MO_stub.md` — **IIS Performance** Monthly Settings and Logging Compliance Review
+  - 14 procedure steps: logging enabled check, W3C format, required STIG log fields (Date/Time/Client IP/Method/URI/Status/Bytes/Time), log directory protection, daily rollover, ETW logging, static/dynamic compression review, output cache security, IIS worker process counters, failed request tracing review
+  - Logging Configuration table per site
+  - Escalation: logging disabled on any site → ISSM immediately; log drive ≥ 85% → ISSM/ISSO
+  - JSIG controls: AU-9, AU-12, CM-6, SC-8, SI-12, CP-9
+
+### Changed
+- `DOCUMENT_TRACKER.md` — Category 24 section added; Completion Summary updated: 56 → 60 MRCs, 31 → 35 stubs, 27% → 29%
+
+---
+
 ## [1.7.0] — 2026-04-02
 ### Added
 New **Category 23 — File and Storage Services** with five JSIG-compliant MRC stubs:
