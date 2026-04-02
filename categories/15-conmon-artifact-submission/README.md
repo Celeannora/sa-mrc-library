@@ -1,20 +1,21 @@
 # Category 15 — Continuous Monitoring (ConMon) Artifact Submission
 
-## Description
-Compilation and timely submission of monthly and quarterly ConMon artifacts to the ISSM. Includes scan reports, log summaries, patch compliance reports, and POA&M updates.
 
-## Applicable NIST Controls
-- CA-7 — Continuous Monitoring
-- PM-6 — Measures of Performance
-- PM-31 — Continuous Monitoring Strategy
+## JSIG Applicability
+This category maps to JSIG-required controls. All tasks require written ISSM authorization (MA-2) and are retained as Body of Evidence (BoE) artifacts for the ATO package and ConMon program.
+
+## Applicable JSIG / NIST SP 800-53 Controls
+| Control | Title | JSIG Requirement |
+|---------|-------|-----------------|
+| CA-7 | Continuous Monitoring | Required — ongoing monitoring of security controls |
+| PM-6 | Measures of Performance | Required — track and monitor program-level security |
+| MA-2 | Controlled Maintenance | All MRCs are MA-2 BoE artifacts |
+
+## JSIG-Specific Notes
+- ISSM manages the continuous monitoring plan per DoDM 5205.07 ISSM responsibilities.
+- Late or incomplete ConMon submissions may constitute a CA-7 finding and jeopardize ATO status.
+- Artifacts must follow the naming convention defined in the SSP or ISSM guidance.
+- All signed MRCs are ConMon artifacts and must be retained per AU-11 and applicable records policy.
 
 ## MRCs in This Category
-
-| MRC ID | Task Title | Periodicity |
-|--------|-----------|-------------|
-| MRC-1501-MO | Monthly ConMon Artifact Compilation and Submission | Monthly |
-| MRC-1502-QR | Quarterly ConMon Package Review with ISSM | Quarterly |
-
-## Notes
-- Late or incomplete ConMon submissions may trigger a finding against CA-7.
-- Artifacts must follow the naming convention defined in the SSP or ISSM guidance.
+> See existing stub files in this directory. Use the AI prompt pattern in the root README to generate additional JSIG-compliant cards for this category.

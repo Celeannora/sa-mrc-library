@@ -1,20 +1,21 @@
 # Category 04 — Backup & Recovery
 
-## Description
-Verification of backup job completion, restore testing (file-level and full system), replication health, and offsite/cloud storage validation.
 
-## Applicable NIST Controls
-- CP-9 — System Backup
-- CP-10 — System Recovery and Reconstitution
+## JSIG Applicability
+This category maps to JSIG-required controls. All tasks require written ISSM authorization (MA-2) and are retained as Body of Evidence (BoE) artifacts for the ATO package and ConMon program.
+
+## Applicable JSIG / NIST SP 800-53 Controls
+| Control | Title | JSIG Requirement |
+|---------|-------|-----------------|
+| CP-9 | System Backup | Required — backup schedule, offsite storage, testing |
+| CP-10 | System Recovery and Reconstitution | Required — restore to known secure state |
+| MA-2 | Controlled Maintenance | All restore tests are controlled maintenance activities |
+
+## JSIG-Specific Notes
+- A verified backup must exist before any patching or major maintenance activity — ISSM may halt operations if backup is not confirmed.
+- Restore tests are BoE artifacts for CP-9 and MA-2.
+- Offsite/alternate storage must be approved and must not introduce unauthorized access paths (MA-4, SC-7).
+- SAP media used for backup must be authorized by PSO per DoDM 5205.07.
 
 ## MRCs in This Category
-
-| MRC ID | Task Title | Periodicity |
-|--------|-----------|-------------|
-| MRC-0401-DA | Daily Backup Job Completion and Health Verification | Daily |
-| MRC-0402-MO | Monthly Backup Restore Test | Monthly |
-| MRC-0403-QR | Quarterly Full System Restore Exercise | Quarterly |
-
-## Notes
-- A verified backup must exist before any patching or major maintenance activity.
-- Restore test results are ConMon artifacts.
+> See existing stub files in this directory. Use the AI prompt pattern in the root README to generate additional JSIG-compliant cards for this category.
