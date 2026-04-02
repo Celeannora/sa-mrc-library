@@ -20,6 +20,31 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [1.3.0] — 2026-04-02
+### Added
+- `MRC-0301-DA_Trellix_ePO.docx` — first fully built MRC card in the library:
+  - Tool-specific: Trellix ePolicy Orchestrator (ePO)
+  - 12 detailed procedure steps with nav paths, click targets, and field names (`code` style)
+  - Background explanation for new SAs (what ePO is, what the check accomplishes)
+  - Non-Compliance Log table (10 rows: Hostname, Last DAT Date, Agent Status, Action Taken)
+  - Non-compliance disposition codes: `ONLINE-STALE`, `OFFLINE`, `UNMANAGED`
+  - Action codes: `WAKE-UP SENT`, `TICKET OPENED`, `ISSO NOTIFIED`, `REMEDIATED`
+  - JSIG AC-6(1) non-tailorable warning banners (header and inline)
+  - Escalation trigger: ≥10% non-compliant endpoints → immediate ISSM notification
+  - Findings Summary with AC-6(1) pass/fail checkbox, system counts, ISSM notification field
+  - SA + ISSM/ISSO sign-off block
+  - Classification banners top and bottom
+  - Generation script: `mrc_0301_da_trellix.js`
+- `categories/03-antivirus-edr/MRC-0301-DA_stub.md` updated to Rev 1.1:
+  - Tool field added: Trellix ePO with console URL format
+  - 12-step procedure summary table with nav paths
+  - `.docx` status and generation date fields added
+
+### Changed
+- `DOCUMENT_TRACKER.md` — MRC-0301-DA `.docx` status updated to 🟢, revision bumped to Rev 1.1
+
+---
+
 ## [1.2.0] — 2026-04-02
 ### Added
 - `JSIG_COMPLIANCE.md` — comprehensive JSIG reference document covering:

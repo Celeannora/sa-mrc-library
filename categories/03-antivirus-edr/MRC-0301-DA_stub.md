@@ -1,28 +1,34 @@
 ---
 mrc_id: MRC-0301-DA
-title: Daily AV/EDR Definition and Agent Health Verification
+title: Daily AV Definition Currency and Agent Health Verification — Trellix ePolicy Orchestrator
 category: 03 — Antivirus / EDR
 periodicity: DAILY
 maintenance_type: PREVENTIVE / INSPECT
-est_time: "00:20"
+est_time: "00:30"
 rin: DA-AV-001
-revision: Rev 1.0
+revision: Rev 1.1
 classification: "[CLASSIFICATION]"
+tool: "Trellix ePolicy Orchestrator (ePO)"
+tool_console_url: "https://[ePO-SERVER]:8443/core/orionSplashScreen.do"
 jsig_controls: "AC-6(1) [NON-TAILORABLE], SI-3, CM-6"
-non_tailorable: "NON-TAILORABLE: AC-6(1) — Endpoint protection coverage is mandatory on all SAP systems"
+non_tailorable: "NON-TAILORABLE: AC-6(1) — Endpoint protection SHALL NOT be absent from any SAP system"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"
 ccb_cr_number: "N/A — Read-only review; no configuration changes"
 sapf_entry_approval: "N/A"
 nonlocal_maintenance: "N"
+docx_status: "COMPLETE — MRC-0301-DA_Trellix_ePO.docx"
+docx_generated: "2026-04-02"
 ---
 
 ## Safety / Hazards
 JSIG: Do not modify EDR policies, exclusions, or configuration without CCB-approved Change Request and ISSM authorization. Any offline or unprotected endpoint constitutes a NON-TAILORABLE control failure (AC-6(1)) — stop and notify ISSM immediately.
 
 ## Tools / Equipment / Access Required
-- EDR/AV management console (approved per MA-3)
-- Privileged SA account (cleared, SAP-authorized per MA-5)
-- ISSM/ISSO contact for immediate escalation
+- **Trellix ePolicy Orchestrator (ePO)** web console — `https://[ePO-SERVER]:8443/core/orionSplashScreen.do`
+- Privileged SA account (cleared, SAP-authorized per MA-5) with ePO login credentials
+- ISSM/ISSO contact info for immediate escalation
+- Navigation path for DAT check: `Menu > Reporting > Queries & Reports > Endpoint Protection > Managed Endpoints DAT Status`
+- Navigation path for Agent Health: `Menu > Reporting > Queries & Reports > Agent Status Summary`
 
 ## Reference Documents
 - JSIG — AC-6(1) [Non-Tailorable], SI-3
@@ -36,17 +42,27 @@ JSIG: Do not modify EDR policies, exclusions, or configuration without CCB-appro
 ## Prerequisites (JSIG MA-2)
 System in normal operational state. ISSM written authorization on file for this MRC series.
 
-## Procedure Steps
+## Procedure Steps (Trellix ePO — 12 Steps)
 
-| Step | Action | Expected Result |
-|------|--------|----------------|
-| 1 | Log in to EDR/AV management console using authorized privileged account. | Authenticated. |
-| 2 | Check definition/signature currency across all managed SAP endpoints. | Definitions within 24 hours. |
-| 3 | Identify any endpoints with outdated definitions or OFFLINE agent status. Document in Finding column. NON-TAILORABLE: any offline endpoint = immediate ISSM notification. | Zero offline or outdated endpoints. |
-| 4 | Review active detections and quarantine queue. Document all new items. | Queue reviewed; all items dispositioned. |
-| 5 | Escalate any unresolved High/Critical detections to ISSO immediately (IR-6). Document escalation. | Escalation documented if applicable. |
-| 6 | Initiate forced definition update on any non-current endpoints. Confirm update success. | All endpoints current post-update. |
-| 7 | Sign and date MRC. Retain as AC-6(1) / SI-3 BoE artifact. | MRC signed, filed, retained. |
+> Full step-by-step with nav paths, click targets, and field names is in the `.docx` version. This stub provides a reference summary.
+
+| Step | Action | Nav Path / Click Target | Expected Result |
+|------|--------|------------------------|----------------|
+| 1 | Log in to ePO console | `https://[ePO-SERVER]:8443/core/orionSplashScreen.do` | Dashboard loads |
+| 2 | Navigate to Queries & Reports | `Menu > Reporting > Queries & Reports` | Report catalog |
+| 3 | Run DAT Status query | `Endpoint Protection > Managed Endpoints DAT Status` — click `Run` | DAT date report renders |
+| 4 | Identify stale DAT hosts | Sort by `DAT Date` ascending; flag any > 24 hrs | List of non-compliant hosts |
+| 5 | Navigate to Agent Status | `Menu > Reporting > Queries & Reports > Agent Status Summary` — click `Run` | Agent status report |
+| 6 | Identify offline/non-communicating agents | Filter `Agent Status = Not Communicating`; note hostnames | List of offline agents |
+| 7 | **JSIG NON-TAILORABLE CHECK** | Any offline endpoint = STOP, notify ISSM immediately (AC-6(1)) | Zero offline endpoints (or ISSM notified) |
+| 8 | Log non-compliant hosts in MRC Non-Compliance Log | Hostname, Last DAT Date, Agent Status, Action Taken | Table populated |
+| 9 | Send Wake-Up Call to stale-DAT online hosts | Select host > `Actions > Agent > Wake Up Agents` | Wake-up command issued |
+| 10 | Check escalation threshold | If ≥10% of managed endpoints non-compliant → escalate to ISSM immediately | Escalation documented if triggered |
+| 11 | Review Threat Event Log | `Menu > Reporting > Threat Event Log` — last 24 hours | No unactioned High/Critical threats |
+| 12 | Sign MRC; file as BoE artifact | SA signature, ISSM/ISSO co-sign if non-compliant | MRC retained per AU-11 |
+
+**Non-Compliance Status Codes:** `ONLINE-STALE` / `OFFLINE` / `UNMANAGED`  
+**Action Codes:** `WAKE-UP SENT` / `TICKET OPENED` / `ISSO NOTIFIED` / `REMEDIATED`
 
 ## Findings Summary
 - Overall Result: [ ] Satisfactory  [ ] Unsatisfactory  [ ] N/A

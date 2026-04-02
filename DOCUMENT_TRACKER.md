@@ -56,7 +56,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0301-DA | Daily AV/EDR Definition and Agent Health Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0301-DA | Daily AV Definition Currency and Agent Health Verification — Trellix ePO | Daily | 🟢 | 🟢 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 | MRC-0302-MO | Monthly EDR Policy Compliance and Full Scan Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 
 ---
