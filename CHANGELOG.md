@@ -20,6 +20,41 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [3.2.0] — 2026-04-03
+### Summary
+Adds MRC-0103-SA — Daily Scripted Software Inventory Check with Change Audit Logging — to Category 01 (Audit & Log Management). This card addresses the operational gap between the monthly Category 17 software audit (MRC-1701-MO) and the need for daily automated detection of unauthorized software installations. Includes a production-ready Linux Bash companion script with full change audit logging, operator identity capture, SHA-256 integrity hashing, and baseline delta detection. Total MRC count: 58.
+
+### Added
+**Category 01 — Audit & Log Management:**
+- `MRC-0103-SA` — Daily Scripted Software Inventory Check with Change Audit Logging
+  - Enumerates all installed packages via `dpkg` (Debian/Ubuntu) or `rpm` (RHEL/Rocky/CentOS)
+  - Computes SHA-256 hash of full package list for integrity verification (SI-7)
+  - Compares current inventory against previous baseline — detects installs, removals, and version changes
+  - Records executing operator identity (`$USER` / `$SUDO_USER`), hostname, and timestamp in every log entry (AU-6)
+  - Full change delta logged to `/var/log/mrc/software-inventory/delta-YYYYMMDD.log`
+  - Supports `--init-baseline` (first run) and `--accept-baseline` (post-ISSM-authorized change acceptance) flags
+  - JSIG controls: AU-2, AU-6, AU-9, CM-8, CM-8(1), SA-22, SI-7
+  - Cross-references: MRC-0101-DA (Splunk log forwarding), MRC-0801-MO (STIG/SCAP baseline), MRC-1701-MO (monthly software audit)
+
+**Scripts:**
+- `scripts/check-software-inventory.sh` — Linux Bash companion script for MRC-0103-SA
+  - Auto-detects `dpkg` vs `rpm` package manager
+  - Writes audit log to `/var/log/mrc/software-inventory/` with 750 permissions
+  - Captures operator identity from `$SUDO_USER` / `$USER` for AU-6 accountability
+  - Exit codes: 0 (PASS), 1 (CHANGE detected), 2 (baseline initialized), 3 (error)
+  - Suitable for cron-based daily execution and alerting on non-zero exit
+
+### Changed
+- `DOCUMENT_TRACKER.md` — v3.2.0: MRC-0103-SA added to Category 01 table; `check-software-inventory.sh` added to Supporting Documents; Cat 01 total MRCs updated to 3; overall total updated to 58
+
+### Repository State at v3.2.0
+- **58 MRC stubs** across 24 categories
+- **1 .docx** generated: MRC-0301-DA
+- **0 ISSM-approved** MRCs — library remains pre-authorization (all cards DRAFT)
+- **Companion scripts:** `check-software-inventory.sh` (Bash/Linux) added alongside existing JS generation scripts
+
+---
+
 ## [3.1.0] — 2026-04-02
 ### Summary
 Completes stub library coverage. Category 20 (Compliance & Authorization / ATO) was the only remaining NOT STARTED category after v3.0.0. This release adds both planned MRCs and rewrites the Cat 20 README with role boundaries, control mapping, and card dependency diagram.

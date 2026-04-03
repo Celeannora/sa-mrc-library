@@ -34,6 +34,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC Blank Template | `mrc-templates/blank/MRC_Template.docx` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG field update in .docx |
 | MRC Generation Script | `scripts/generate-mrc.js` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG field additions |
 | ISSM Proposal Script | `scripts/generate-issm-proposal.js` | v1.0 | 🟡 DRAFT | 2026-04-02 | SA | Pending JSIG language update |
+| SW Inventory Script | `scripts/check-software-inventory.sh` | v1.0 | 🟡 DRAFT | 2026-04-03 | SA | Companion script for MRC-0103-SA; Linux Bash; dpkg/rpm |
 
 ---
 
@@ -43,6 +44,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0101-DA | Daily Security Event and Audit Log Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-0102-MO | Monthly Audit Log Archival and Retention Verification | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0103-SA | Daily Scripted Software Inventory Check with Change Audit Logging | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
 ---
 
@@ -276,7 +278,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | Category | Total MRCs | Stub Complete | .docx Complete | ISSM Approved | % Done |
 |----------|-----------|--------------|---------------|--------------|--------|
-| 01 Audit & Log Management | 2 | 1 | 0 | 0 | 25% |
+| 01 Audit & Log Management | 3 | 2 | 0 | 0 | 33% |
 | 02 Patch & Vulnerability Mgmt | 6 | 6 | 0 | 0 | 50% |
 | 03 Antivirus / EDR | 2 | 2 | 1 | 0 | 63% |
 | 04 Backup & Recovery | 1 | 1 | 0 | 0 | 50% |
@@ -301,9 +303,10 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 23 File & Storage Services | 7 | 7 | 0 | 0 | 50% |
 | 24 Web Server (IIS) | 4 | 4 | 0 | 0 | 50% |
 | 25 Vuln Scanning | ~~3~~ | ~~3~~ | ~~0~~ | ~~0~~ | **MERGED → Cat 02** |
-| **TOTAL** | **57** | **57** | **1** | **0** | **53%** |
+| **TOTAL** | **58** | **58** | **1** | **0** | **53%** |
 
 > **v3.1.0 note:** All 57 stubs complete and in new format. Category 20 stubs added in v3.1.0 — library stub coverage is now 100%.
+> **v3.2.0 note:** MRC-0103-SA added to Category 01 — daily scripted software inventory with change audit logging (JSIG AU-2, AU-6, AU-9, CM-8, CM-8(1), SA-22, SI-7). Total MRC count: 58.
 
 ---
 
@@ -320,4 +323,4 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-*Last Updated: 2026-04-02 | Version: v3.1.0 | Classification: [CLASSIFICATION]*
+*Last Updated: 2026-04-03 | Version: v3.2.0 | Classification: [CLASSIFICATION]*
