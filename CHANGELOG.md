@@ -19,6 +19,39 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 
 ---
 
+## [2.2.0] — 2026-04-02
+### Added
+Operationally-specified MRC stubs across 13 categories — all built from real SA task workflows:
+
+| MRC | Category | Title |
+|-----|---------|-------|
+| MRC-0101-DA | 01 Audit & Log | Daily Splunk agent health + port verification (script-assisted) |
+| MRC-0201-WK | 02 Patch & Vuln | Weekly Nessus report review, vuln tracking, POA&M update |
+| MRC-0202-MO | 02 Patch & Vuln | Monthly WSUS offline import: Testing OU → Production OU approval workflow, patched host report |
+| MRC-0203-MO | 02 Patch & Vuln | Nessus finding exception documentation and ISSM approval tracking |
+| MRC-0301-WK | 03 AV / EDR | Weekly Trellix ePO: DAT download/import, host audit (System Tree), full/quick scan check, ATP/WC/DLP module status, engine version |
+| MRC-0501-MO | 05 Account & Access | Monthly account audit: 60/90-day inactivity (script), privileged group review, admin account document review |
+| MRC-0601-DA | 06 System Health | Daily service check, resource utilization, uptime/pending reboot, physical cleaning + HDD light check |
+| MRC-0801-MO | 08 Config & Baseline | Monthly STIG/SCAP scan, drift detection, variance documentation (VULN-ID), benchmark adjustment rules |
+| MRC-0901-WK | 09 Certificate & PKI | Weekly local certificate store expiration check (script-assisted) |
+| MRC-1001-DA | 10 Identity & Directory | Daily DC replication health (script), DNS zone integrity, DHCP scope baseline |
+| MRC-1002-QR | 10 Identity & Directory | Quarterly GPO audit: DISA GPO release verification, SCC benchmark alignment |
+| MRC-1101-WK | 11 NTP | Weekly NTP sync verification: server hierarchy + domain host audit (script) |
+| MRC-1201-WK | 12 Removable Media | Weekly DLP event review and removable media policy enforcement verification |
+| MRC-1301-QR | 13 Physical / Hardware | Quarterly hardware lifecycle and firmware review (upgrade path documentation) |
+| MRC-1302-SA | 13 Physical / Hardware | Semi-annual UPS and generator battery test (two-person, ISSM-authorized) |
+| MRC-1603-MO | 16 Encryption | Monthly BitLocker AD query/export (script) + asset inventory verification (digital + physical walk) |
+| MRC-1703-MO | 17 Supply Chain | Monthly domain software inventory scan: Nessus cross-reference + EOL/upgrade path documentation |
+| MRC-2405-WK | 23 File & Storage | Weekly file server share and ACL integrity review (Everyone permission check) |
+| MRC-2406-MO | 23 File & Storage | Monthly storage services health and LUN integrity audit (hash checks + deduplication) |
+
+### Notes
+- All stubs include script references to companion PowerShell scripts (to be built in scripts/ directory)
+- Testing OU → Production OU patch workflow mirrors real WSUS air-gap approval chain
+- Non-category tasks (removable media DLP, hardware lifecycle, UPS) placed in appropriate existing categories
+
+---
+
 ## [2.1.0] — 2026-04-02
 ### Added
 **Role-Separated Operational Baselines** — the original `SA-BASELINE.md` (root level) has been superseded by four role-specific documents in `baselines/`:
