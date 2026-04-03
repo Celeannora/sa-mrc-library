@@ -14,10 +14,41 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 > Items staged for the next release. Move to a versioned section upon commit.
 
 - [ ] Filled `.docx` MRC cards for all category leads
-- [ ] Cat 20 (Compliance & ATO) MRC stubs — MRC-2001-MO and MRC-2002-AN
 - [ ] ISSM proposal template update to reflect JSIG non-tailorable control language
 - [ ] `generate-mrc.js` update to include JSIG fields (non-tailorable flag, ISSM auth ref, CCB CR number, SAPF entry approval)
 - [ ] PowerShell companion scripts: `Check-SplunkForwarders.ps1`, `Invoke-DCHealthCheck.ps1`, `Invoke-NTPAudit.ps1`, `Invoke-ADAccountAudit.ps1`, `Invoke-BitLockerADExport.ps1`, `Check-CertificateExpiry.ps1`
+
+---
+
+## [3.1.0] — 2026-04-02
+### Summary
+Completes stub library coverage. Category 20 (Compliance & Authorization / ATO) was the only remaining NOT STARTED category after v3.0.0. This release adds both planned MRCs and rewrites the Cat 20 README with role boundaries, control mapping, and card dependency diagram.
+
+### Added
+**Category 20 — Compliance & Authorization (ATO):**
+- `MRC-2001-MO` — Monthly ATO Status and POA&M Milestone Review
+  - Tracks ATO expiration countdown with 90-day renewal trigger
+  - Monthly POA&M overdue/escalation review
+  - ConMon package submission verification
+  - Authorization boundary change detection
+  - Feeds into MRC-2002-AN when renewal window opens
+- `MRC-2002-AN` — Annual ATO Renewal Package Preparation
+  - Full SA Technical Evidence Package assembly checklist
+  - 12-month ConMon archive verification
+  - Non-tailorable control compliance summary (AC-6(1), SC-28, SA-22)
+  - Cross-references all source MRCs: 0204-MO, 0801-MO, 0205-MO, 1501-MO, 1703-MO
+  - Card dependency diagram in README shows full evidence flow to AO
+
+### Changed
+- `categories/20-compliance-authorization-ato/README.md` — full rewrite with role boundaries (SA/ISSM/ISSO/AO), control table, JSIG notes, card sequence / dependency diagram
+- `DOCUMENT_TRACKER.md` — v3.1.0: Cat 20 marked DRAFT, total stub count updated to 57 (100% coverage)
+
+### Repository State at v3.1.0
+- **57 MRC stubs** across 24 categories — **100% stub coverage**
+- **All stubs in new format** — uniform structure across entire library
+- **1 .docx** generated: MRC-0301-DA
+- **0 ISSM-approved** MRCs — library remains pre-authorization (all cards DRAFT)
+- Next priority: `.docx` generation for category leads and/or PowerShell companion scripts
 
 ---
 

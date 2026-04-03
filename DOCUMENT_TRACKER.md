@@ -212,12 +212,10 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ## MRC Cards — Category 20: Compliance & Authorization (ATO)
 
-> **Note:** Category 20 README exists. MRC stubs are pending — planned for next development cycle.
-
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-2001-MO | Monthly ATO Status and POA&M Milestone Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-2002-AN | Annual ATO Renewal Package Preparation | Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-2001-MO | Monthly ATO Status and POA&M Milestone Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2002-AN | Annual ATO Renewal Package Preparation | Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -297,15 +295,15 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 17 Supply Chain & Software | 2 | 2 | 0 | 0 | 50% |
 | 18 Disaster Recovery | 2 | 2 | 0 | 0 | 50% |
 | 19 Documentation & Records | 2 | 2 | 0 | 0 | 50% |
-| 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
+| 20 Compliance & ATO | 2 | 2 | 0 | 0 | 50% |
 | 21 Name & Address Services | 3 | 3 | 0 | 0 | 50% |
 | 22 Security & Protection | 3 | 3 | 0 | 0 | 50% |
 | 23 File & Storage Services | 7 | 7 | 0 | 0 | 50% |
 | 24 Web Server (IIS) | 4 | 4 | 0 | 0 | 50% |
 | 25 Vuln Scanning | ~~3~~ | ~~3~~ | ~~0~~ | ~~0~~ | **MERGED → Cat 02** |
-| **TOTAL** | **56** | **55** | **1** | **0** | **51%** |
+| **TOTAL** | **57** | **57** | **1** | **0** | **53%** |
 
-> **v3.0.0 Baseline note:** All 55 stubs with content are in new format (numbered sections, Background for New SA, Nav Path column, Non-Compliance log, Sign-Off block). Category 20 stubs are the only remaining NOT STARTED items — planned for next development cycle.
+> **v3.1.0 note:** All 57 stubs complete and in new format. Category 20 stubs added in v3.1.0 — library stub coverage is now 100%.
 
 ---
 
@@ -322,4 +320,4 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-*Last Updated: 2026-04-02 | Version: v3.0.0 | Classification: [CLASSIFICATION]*
+*Last Updated: 2026-04-02 | Version: v3.1.0 | Classification: [CLASSIFICATION]*
