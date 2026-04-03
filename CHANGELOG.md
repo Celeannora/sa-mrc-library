@@ -55,6 +55,37 @@ Adds MRC-0103-SA — Daily Scripted Software Inventory Check with Change Audit L
 
 ---
 
+## [3.3.0] — 2026-04-03
+### Summary
+Adds MRC-2308-DA — Daily File Storage Hash Audit and Duplicate File Detection — to Category 23 (File & Storage Services). This card extends the scripted audit methodology introduced in MRC-0103-SA to cover file-level storage integrity: SHA-256 hashing every file under an SA-supplied folder path, compiling a full hash inventory, and producing a dedicated duplicate file list. The companion script is a **placeholder** — `scripts/check-file-storage-hashes.sh` has not yet been generated; the MRC documents the full expected behavior so the card is operationally complete pending script creation. Total MRC count: 59.
+
+### Added
+**Category 23 — File & Storage Services:**
+- `MRC-2308-DA` — Daily File Storage Hash Audit and Duplicate File Detection
+  - SA prompted for target folder path at script execution time — no hardcoded paths
+  - Recursively traverses all files under the specified path using `find`
+  - Computes SHA-256 hash per file using `sha256sum` (SI-7 integrity verification)
+  - Compiles full hash inventory log: `[SHA-256] [file path]` — one line per file
+  - Produces a separate dedicated duplicate file list: duplicate sets grouped by hash with all matching paths listed
+  - Records operator identity (`$USER` / `$SUDO_USER`), scanned path, hostname, and timestamp in every log entry (AU-6)
+  - Exit codes: 0 (no duplicates), 1 (duplicates detected), 3 (error) — cron-friendly
+  - JSIG controls: AU-2, AU-6, AU-9, CM-3, CM-8, SI-7, MP-6
+  - Cross-references: MRC-2301-WK (share/ACL review), MRC-2302-MO (storage health), MRC-0103-SA (same hash methodology)
+  - Includes 12-section full MRC card: background, safety/hazards, tools, references, prerequisites, 15-step procedure, Scan Summary table, Duplicate File Adjudication table, findings log, findings summary checkboxes, sign-off block
+  - **Script status: PLACEHOLDER** — `scripts/check-file-storage-hashes.sh` not yet generated; Section 1 documents full expected script behavior for when generation occurs
+
+### Changed
+- `DOCUMENT_TRACKER.md` — v3.3.0: MRC-2308-DA added to Category 23 table; Cat 23 total MRCs updated to 8; overall total updated to 59
+
+### Repository State at v3.3.0
+- **59 MRC stubs** across 24 categories
+- **1 .docx** generated: MRC-0301-DA
+- **0 ISSM-approved** MRCs — library remains pre-authorization (all cards DRAFT)
+- **Companion scripts:** `check-software-inventory.sh` (complete); `check-file-storage-hashes.sh` (PLACEHOLDER — not yet generated)
+- Next priority for MRC-2308-DA: generate `scripts/check-file-storage-hashes.sh`
+
+---
+
 ## [3.1.0] — 2026-04-02
 ### Summary
 Completes stub library coverage. Category 20 (Compliance & Authorization / ATO) was the only remaining NOT STARTED category after v3.0.0. This release adds both planned MRCs and rewrites the Cat 20 README with role boundaries, control mapping, and card dependency diagram.

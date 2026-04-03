@@ -252,6 +252,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC-2305-MO | Monthly Data Deduplication Health and Savings Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-2306-WK | Weekly IIS-Hosted Share and Web Application Storage Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-2307-MO | Monthly Storage Capacity Trending and Quota Enforcement Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2308-DA | Daily File Storage Hash Audit and Duplicate File Detection | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
 ---
 
@@ -300,13 +301,14 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 20 Compliance & ATO | 2 | 2 | 0 | 0 | 50% |
 | 21 Name & Address Services | 3 | 3 | 0 | 0 | 50% |
 | 22 Security & Protection | 3 | 3 | 0 | 0 | 50% |
-| 23 File & Storage Services | 7 | 7 | 0 | 0 | 50% |
+| 23 File & Storage Services | 8 | 8 | 0 | 0 | 50% |
 | 24 Web Server (IIS) | 4 | 4 | 0 | 0 | 50% |
 | 25 Vuln Scanning | ~~3~~ | ~~3~~ | ~~0~~ | ~~0~~ | **MERGED → Cat 02** |
-| **TOTAL** | **58** | **58** | **1** | **0** | **53%** |
+| **TOTAL** | **59** | **59** | **1** | **0** | **53%** |
 
 > **v3.1.0 note:** All 57 stubs complete and in new format. Category 20 stubs added in v3.1.0 — library stub coverage is now 100%.
 > **v3.2.0 note:** MRC-0103-SA added to Category 01 — daily scripted software inventory with change audit logging (JSIG AU-2, AU-6, AU-9, CM-8, CM-8(1), SA-22, SI-7). Total MRC count: 58.
+> **v3.3.0 note:** MRC-2308-DA added to Category 23 — daily file storage hash audit and duplicate file detection (JSIG AU-2, AU-6, AU-9, CM-3, CM-8, SI-7, MP-6). Script placeholder — companion script not yet generated. Total MRC count: 59.
 
 ---
 
@@ -323,4 +325,4 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-*Last Updated: 2026-04-03 | Version: v3.2.0 | Classification: [CLASSIFICATION]*
+*Last Updated: 2026-04-03 | Version: v3.3.0 | Classification: [CLASSIFICATION]*
