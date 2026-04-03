@@ -6,7 +6,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 **Status Legend:**
 
 | Status | Meaning |
-|--------|---------|
+|--------|---------| 
 | 🔴 `NOT STARTED` | Stub or placeholder only — no content drafted |
 | 🟡 `DRAFT` | Content drafted — not yet ISSM reviewed or approved |
 | 🟠 `ISSM REVIEW` | Submitted to ISSM for review and authorization |
@@ -23,8 +23,8 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 |----------|------|---------|--------|-------------|-------|-------|
 | Master README | `README.md` | v1.2.0 | 🟢 APPROVED | 2026-04-02 | SA / ISSM | JSIG-updated |
 | JSIG Compliance Reference | `JSIG_COMPLIANCE.md` | v1.0.0 | 🟢 APPROVED | 2026-04-02 | SA / ISSM | Non-tailorable controls documented |
-| Changelog | `CHANGELOG.md` | v1.1.0 | 🟢 APPROVED | 2026-04-02 | SA | Living document |
-| Document Tracker | `DOCUMENT_TRACKER.md` | v1.0.0 | 🟢 APPROVED | 2026-04-02 | SA | This file |
+| Changelog | `CHANGELOG.md` | v3.0.0 | 🟢 APPROVED | 2026-04-02 | SA | Living document |
+| Document Tracker | `DOCUMENT_TRACKER.md` | v3.0.0 | 🟢 APPROVED | 2026-04-02 | SA | This file |
 | Technical Task Scope | `TECHNICAL_TASK_SCOPE.md` | v1.0.0 | 🟢 APPROVED | 2026-04-02 | SA | Daily/Weekly/Monthly assignments |
 | Baselines Index | `baselines/BASELINES-INDEX.md` | v1.0.0 | 🟡 DRAFT | 2026-04-02 | SA/ISSM | Role boundary matrix, escalation matrix, quick-reference |
 | SA Operational Baseline | `baselines/SA-BASELINE.md` | v2.0.0 | 🟡 DRAFT | 2026-04-02 | SA | SA-only: air-gap ops, shift procedures, incident triggers |
@@ -50,9 +50,12 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0201-MO | Monthly OS and Application Patch Application and Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0202-MO | Monthly Vulnerability Scan Execution and Findings Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-0203-QR | Quarterly Patch Compliance Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0201-WK | Weekly WSUS Patch Status and Approval Queue Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0202-MO | Monthly OS and Application Patch Application and Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0203-MO | Monthly Patch Compliance Report and Non-Compliant System Remediation | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0204-MO | Monthly Nessus Credentialed Vulnerability Scan Execution and Results Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0205-MO | Monthly Vulnerability POA&M Update and Remediation Tracking | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0206-WK | Weekly Nessus Plugin Feed Currency and Scanner Health Check | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -61,7 +64,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0301-DA | Daily AV Definition Currency and Agent Health Verification — Trellix ePO | Daily | 🟢 | 🟢 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
-| MRC-0302-MO | Monthly EDR Policy Compliance and Full Scan Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0301-WK | Weekly EDR Policy Compliance and Threat Event Review — Trellix ePO | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -69,9 +72,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0401-DA | Daily Backup Job Completion and Health Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0402-MO | Monthly Backup Restore Test | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-0403-QR | Quarterly Full System Restore Exercise | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0401-DA | Daily Backup Job Completion and Health Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
 ---
 
@@ -79,9 +80,8 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0501-WK | Weekly Dormant and Anomalous Account Review | Weekly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-0502-MO | Monthly Privileged Account Recertification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0503-QR | Quarterly Full Access Control Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0501-MO | Monthly User Account Review and Dormant Account Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0502-MO | Monthly Privileged Account Recertification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
 ---
 
@@ -90,7 +90,6 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0601-DA | Daily System Health Dashboard Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0602-MO | Monthly Resource Utilization Trend Analysis | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 
 ---
 
@@ -98,8 +97,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0701-DA | Daily IDS/IPS and Network Alert Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0702-QR | Quarterly Firewall Rule and ACL Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-0701-DA | Daily IDS/IPS and Network Alert Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
 ---
 
@@ -108,8 +106,6 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0801-MO | Monthly STIG/SCAP Scan and Configuration Drift Detection | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0802-MO | Monthly Software Inventory Reconciliation | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-0803-QR | Quarterly Baseline Configuration Review | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 
 ---
 
@@ -118,7 +114,6 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0901-WK | Weekly Certificate Expiration Look-Ahead (30-Day) | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-0902-SA | Semi-Annual Full PKI Chain and Certificate Audit | Semi-Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 
 ---
 
@@ -127,8 +122,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-1001-DA | Daily Domain Controller Replication and Health Check | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-1002-MO | Monthly DNS Zone Integrity and DHCP Scope Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1003-QR | Quarterly Group Policy Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1002-QR | Quarterly Group Policy Audit and Configuration Baseline Review | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-1004-WK | Weekly AD DS Health and Integrity Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-1005-MO | Monthly AD CS Health and Certificate Authority Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-1006-MO | Monthly AD FS Health and Token Configuration Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
@@ -149,8 +143,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1201-MO | Monthly Removable Media Policy Enforcement Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-1202-QR | Quarterly Removable Media Inventory and Authorization Audit | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1201-WK | Weekly Removable Media Scan Station and DLP Policy Enforcement Check | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -158,9 +151,9 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1301-DA | Daily Physical Access Log and Equipment Visual Check | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-1302-QR | Quarterly Hardware Lifecycle and Firmware Review | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1303-SA | Semi-Annual UPS and Generator Test | Semi-Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1301-DA | Daily Physical Access Log Review and Equipment Visual Inspection | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
+| MRC-1301-QR | Quarterly Hardware Lifecycle and Firmware Review | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1302-SA | Semi-Annual UPS Load Test and Battery Health Verification | Semi-Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -168,8 +161,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1401-QR | Quarterly IR Plan and Escalation Path Review | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-1402-AN | Annual IR Tabletop Exercise | Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1401-QR | Quarterly Incident Response Plan and Escalation Path Review | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
 ---
 
@@ -177,8 +169,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1501-MO | Monthly ConMon Artifact Compilation and Submission | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-1502-QR | Quarterly ConMon Package Review with ISSM | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1501-MO | Monthly ConMon Artifact Compilation and Submission | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
 ---
 
@@ -186,8 +177,9 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1601-QR | Quarterly Data-at-Rest Encryption Verification | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1602-SA | Semi-Annual Full Cryptographic Implementation Review | Semi-Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1601-QR | Quarterly Data-at-Rest Encryption Audit — BitLocker / VeraCrypt | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1602-SA | Semi-Annual Full Cryptographic Implementation Review | Semi-Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1603-MO | Monthly BitLocker Recovery Key Escrow and TPM Integrity Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -195,8 +187,8 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1701-MO | Monthly Software Inventory and EOL/Unsupported Component Check | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1702-QR | Quarterly Supply Chain and Software Integrity Verification | Quarterly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1701-MO | Monthly Software Inventory Audit and EOL/Unsupported Component Check | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1702-QR | Quarterly Supply Chain Risk and Software Integrity Verification | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -204,8 +196,8 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1801-SA | Semi-Annual DR Tabletop or Live Failover Exercise | Semi-Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1802-AN | Annual Full Disaster Recovery Exercise | Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1801-SA | Semi-Annual DR Tabletop or Live Failover Exercise | Semi-Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1802-AN | Annual Full Disaster Recovery Exercise | Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -213,12 +205,14 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-1901-MO | Monthly Documentation Currency and POA&M Review | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
-| MRC-1902-AN | Annual SSP and Records Retention Audit | Annual | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
+| MRC-1901-MO | Monthly Documentation Currency and MRC Filing Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-1902-AN | Annual SSP Review and Records Retention Audit | Annual | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
 ## MRC Cards — Category 20: Compliance & Authorization (ATO)
+
+> **Note:** Category 20 README exists. MRC stubs are pending — planned for next development cycle.
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
@@ -227,64 +221,13 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-## Completion Summary
-
-| Category | Total MRCs | Stub Complete | .docx Complete | ISSM Approved | % Done |
-|----------|-----------|--------------|---------------|--------------|--------|
-| 01 Audit & Log Management | 2 | 1 | 0 | 0 | 25% |
-| 02 Patch & Vulnerability Mgmt | 3 | 1 | 0 | 0 | 17% |
-| 03 Antivirus / EDR | 2 | 1 | 0 | 0 | 25% |
-| 04 Backup & Recovery | 3 | 1 | 0 | 0 | 17% |
-| 05 Account & Access Management | 3 | 1 | 0 | 0 | 17% |
-| 06 System Health & Performance | 2 | 1 | 0 | 0 | 25% |
-| 07 Network & Boundary Security | 2 | 1 | 0 | 0 | 25% |
-| 08 Configuration & Baseline | 3 | 1 | 0 | 0 | 17% |
-| 09 Certificate & PKI | 2 | 1 | 0 | 0 | 25% |
-| 10 Identity & Directory | 3 | 1 | 0 | 0 | 17% |
-| 11 Time Synchronization | 1 | 1 | 0 | 0 | 50% |
-| 12 Removable Media Controls | 2 | 1 | 0 | 0 | 25% |
-| 13 Physical Security & Hardware | 3 | 1 | 0 | 0 | 17% |
-| 14 Incident Response | 2 | 1 | 0 | 0 | 25% |
-| 15 ConMon Artifacts | 2 | 1 | 0 | 0 | 25% |
-| 16 Encryption Verification | 2 | 0 | 0 | 0 | 0% |
-| 17 Supply Chain & Software | 2 | 0 | 0 | 0 | 0% |
-| 18 Disaster Recovery | 2 | 0 | 0 | 0 | 0% |
-| 19 Documentation & Records | 2 | 0 | 0 | 0 | 0% |
-| 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
-| **TOTAL** | **63** | **38** | **1** | **0** | **31%** |
-
----
-
-## MRC Cards — Category 25: Vulnerability Scanning and Tracking (Nessus)
+## MRC Cards — Category 21: Name & Address Services
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-2501-MO | Monthly Nessus Credentialed Vulnerability Scan Execution and Results Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2502-MO | Monthly Vulnerability POA&M Update and Remediation Tracking | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2503-WK | Weekly Nessus Plugin Feed Currency and Scanner Health Check | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-
----
-
-## MRC Cards — Category 24: Web Server (IIS)
-
-| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
-|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-2401-WK | Weekly IIS Web Server Service Health and Site Inventory Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2402-MO | Monthly IIS HTTP Features Configuration and Directory Hardening Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2403-WK | Weekly IIS Security Configuration and Authentication Audit | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2404-MO | Monthly IIS Performance Settings and Logging Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-
----
-
-## MRC Cards — Category 23: File and Storage Services
-
-| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
-|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-2301-WK | Weekly File Server Share and ACL Integrity Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2302-MO | Monthly Storage Services Health and LUN Integrity Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2303-WK | Weekly DFS Namespace and Replication Health Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2304-MO | Monthly FSRM Quota and File Screen Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2305-MO | Monthly Data Deduplication Health and Savings Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2101-DA | Daily DNS Server Health and Zone Integrity Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2102-WK | Weekly DHCP Server Health and Scope Utilization Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2103-MO | Monthly IPAM Audit and Address Space Reconciliation | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 
 ---
 
@@ -298,13 +241,71 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-## MRC Cards — Category 21: Name & Address Services
+## MRC Cards — Category 23: File & Storage Services
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-2101-DA | Daily DNS Server Health and Zone Integrity Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2102-WK | Weekly DHCP Server Health and Scope Utilization Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
-| MRC-2103-MO | Monthly IPAM Audit and Address Space Reconciliation | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2301-WK | Weekly File Server Share and ACL Integrity Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2302-MO | Monthly Storage Services Health and LUN Integrity Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2303-WK | Weekly DFS Namespace and Replication Health Verification | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2304-MO | Monthly FSRM Quota and File Screen Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2305-MO | Monthly Data Deduplication Health and Savings Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2306-WK | Weekly IIS-Hosted Share and Web Application Storage Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2307-MO | Monthly Storage Capacity Trending and Quota Enforcement Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+
+---
+
+## MRC Cards — Category 24: Web Server (IIS)
+
+| MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
+|--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-2401-WK | Weekly IIS Web Server Service Health and Site Inventory Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2402-MO | Monthly IIS HTTP Features Configuration and Directory Hardening Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2403-WK | Weekly IIS Security Configuration and Authentication Audit | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-2404-MO | Monthly IIS Performance Settings and Logging Compliance Review | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+
+> **Note:** MRC-2405-WK and MRC-2406-MO (IIS-related storage/capacity) were moved to Category 23 as MRC-2306-WK and MRC-2307-MO during v3.0.0 baseline cleanup.
+
+---
+
+## ~~Category 25: Vulnerability Scanning and Tracking~~ *(MERGED INTO CAT 02)*
+
+> **Removed in v3.0.0.** MRC-2501-MO, MRC-2502-MO, and MRC-2503-WK were merged into Category 02 as MRC-0204-MO, MRC-0205-MO, and MRC-0206-WK respectively. Cat 25 directory deleted. See Category 02 table above.
+
+---
+
+## Completion Summary
+
+| Category | Total MRCs | Stub Complete | .docx Complete | ISSM Approved | % Done |
+|----------|-----------|--------------|---------------|--------------|--------|
+| 01 Audit & Log Management | 2 | 1 | 0 | 0 | 25% |
+| 02 Patch & Vulnerability Mgmt | 6 | 6 | 0 | 0 | 50% |
+| 03 Antivirus / EDR | 2 | 2 | 1 | 0 | 63% |
+| 04 Backup & Recovery | 1 | 1 | 0 | 0 | 50% |
+| 05 Account & Access Management | 2 | 2 | 0 | 0 | 50% |
+| 06 System Health & Performance | 1 | 1 | 0 | 0 | 50% |
+| 07 Network & Boundary Security | 1 | 1 | 0 | 0 | 50% |
+| 08 Configuration & Baseline | 1 | 1 | 0 | 0 | 50% |
+| 09 Certificate & PKI | 1 | 1 | 0 | 0 | 50% |
+| 10 Identity & Directory | 7 | 7 | 0 | 0 | 50% |
+| 11 Time Synchronization | 1 | 1 | 0 | 0 | 50% |
+| 12 Removable Media Controls | 1 | 1 | 0 | 0 | 50% |
+| 13 Physical Security & Hardware | 3 | 3 | 0 | 0 | 50% |
+| 14 Incident Response | 1 | 1 | 0 | 0 | 50% |
+| 15 ConMon Artifacts | 1 | 1 | 0 | 0 | 50% |
+| 16 Encryption Verification | 3 | 3 | 0 | 0 | 50% |
+| 17 Supply Chain & Software | 2 | 2 | 0 | 0 | 50% |
+| 18 Disaster Recovery | 2 | 2 | 0 | 0 | 50% |
+| 19 Documentation & Records | 2 | 2 | 0 | 0 | 50% |
+| 20 Compliance & ATO | 2 | 0 | 0 | 0 | 0% |
+| 21 Name & Address Services | 3 | 3 | 0 | 0 | 50% |
+| 22 Security & Protection | 3 | 3 | 0 | 0 | 50% |
+| 23 File & Storage Services | 7 | 7 | 0 | 0 | 50% |
+| 24 Web Server (IIS) | 4 | 4 | 0 | 0 | 50% |
+| 25 Vuln Scanning | ~~3~~ | ~~3~~ | ~~0~~ | ~~0~~ | **MERGED → Cat 02** |
+| **TOTAL** | **56** | **55** | **1** | **0** | **51%** |
+
+> **v3.0.0 Baseline note:** All 55 stubs with content are in new format (numbered sections, Background for New SA, Nav Path column, Non-Compliance log, Sign-Off block). Category 20 stubs are the only remaining NOT STARTED items — planned for next development cycle.
 
 ---
 
@@ -321,4 +322,4 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-*Last Updated: 2026-04-02 | Classification: [CLASSIFICATION]*
+*Last Updated: 2026-04-02 | Version: v3.0.0 | Classification: [CLASSIFICATION]*

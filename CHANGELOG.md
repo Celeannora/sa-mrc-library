@@ -14,8 +14,65 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 > Items staged for the next release. Move to a versioned section upon commit.
 
 - [ ] Filled `.docx` MRC cards for all category leads
+- [ ] Cat 20 (Compliance & ATO) MRC stubs — MRC-2001-MO and MRC-2002-AN
 - [ ] ISSM proposal template update to reflect JSIG non-tailorable control language
 - [ ] `generate-mrc.js` update to include JSIG fields (non-tailorable flag, ISSM auth ref, CCB CR number, SAPF entry approval)
+- [ ] PowerShell companion scripts: `Check-SplunkForwarders.ps1`, `Invoke-DCHealthCheck.ps1`, `Invoke-NTPAudit.ps1`, `Invoke-ADAccountAudit.ps1`, `Invoke-BitLockerADExport.ps1`, `Check-CertificateExpiry.ps1`
+
+---
+
+## [3.0.0] — 2026-04-02
+### Summary
+Baseline cleanup and structural normalization. This is a MAJOR version bump because it restructures the category hierarchy, eliminates an entire category (Cat 25), corrects misassigned MRC IDs, and upgrades all old-format stubs to the current standard format. The repository is now considered **Baseline v3.0.0** — a clean, consistent foundation for all future development.
+
+### Removed
+- `SA-BASELINE.md` (root level) — deleted. Superseded by `baselines/SA-BASELINE.md` (committed in v2.1.0). Root copy was stale duplicate.
+- `categories/25-vulnerability-scanning-tracking/` — entire directory removed. All three MRCs merged into Category 02 (see Added below).
+- `categories/24-web-server-iis/MRC-2405-WK_stub.md` — misassigned. File/storage content does not belong in Cat 24 (IIS). Moved to Cat 23.
+- `categories/24-web-server-iis/MRC-2406-MO_stub.md` — misassigned. Same reason. Moved to Cat 23.
+- `categories/02-patch-vulnerability-management/MRC-0201-MO_stub.md` — old 6-step generic stub. Superseded by MRC-0201-WK (operational WSUS stub) committed in v2.2.0. ID collision resolved by removal of the old generic card.
+- `categories/12-removable-media-controls/MRC-1201-MO_stub.md` — old 5-step generic stub. Superseded by MRC-1201-WK (operational DLP stub) committed in v2.2.0.
+- `categories/17-supply-chain-software-integrity/MRC-1703-MO_stub.md` — standalone stub. Content consolidated into MRC-1701-MO (see Changed below). Stub deleted after merge.
+
+### Added
+**Category 02 — Patch & Vulnerability Management (Nessus cards, merged from Cat 25):**
+- `MRC-0204-MO` — Monthly Nessus Credentialed Vulnerability Scan Execution and Results Review (was MRC-2501-MO)
+- `MRC-0205-MO` — Monthly Vulnerability POA&M Update and Remediation Tracking (was MRC-2502-MO)
+- `MRC-0206-WK` — Weekly Nessus Plugin Feed Currency and Scanner Health Check (was MRC-2503-WK)
+
+**Category 23 — File & Storage Services (IDs corrected, moved from Cat 24):**
+- `MRC-2306-WK` — IIS-Hosted Share and Web Application Storage Review (was MRC-2405-WK)
+- `MRC-2307-MO` — Storage Capacity Trending and Quota Enforcement Audit (was MRC-2406-MO)
+
+### Changed
+- `MRC-1701-MO` — Replaced old generic supply chain stub with consolidated operational content (formerly split between 1701 and 1703). Now covers full monthly software inventory audit, EOL check, SA-22 non-tailorable compliance workflow, and ISSM findings report. Rev 1.0.
+
+### Upgraded (Old Format → New Format)
+The following stubs were written before the standard new format was established. All have been upgraded to include: YAML frontmatter with full JSIG fields, Background (New SA) section, Nav Path column in procedure table, Non-Compliance / Findings Log table, and Sign-Off block.
+
+| MRC | Category | Rev |
+|-----|---------|-----|
+| MRC-0301-DA | 03 AV / EDR | Rev 1.0 → Rev 1.1 |
+| MRC-0401-DA | 04 Backup & Recovery | Rev 1.0 → Rev 1.1 |
+| MRC-0502-MO | 05 Account & Access | Rev 1.0 → Rev 1.1 |
+| MRC-0701-DA | 07 Network & Boundary | Rev 1.0 → Rev 1.1 |
+| MRC-1301-DA | 13 Physical Security | Rev 1.0 → Rev 1.1 |
+| MRC-1401-QR | 14 Incident Response | Rev 1.0 → Rev 1.1 |
+| MRC-1501-MO | 15 ConMon Artifacts | Rev 1.0 → Rev 1.1 |
+
+### Verified (Already New Format — No Changes Required)
+- Cat 10 (MRC-1004-WK through MRC-1008-MO) — confirmed new format
+- Cat 21 (MRC-2101-DA through MRC-2103-MO) — confirmed new format
+- Cat 22 (MRC-2201-WK through MRC-2203-MO) — confirmed new format
+- Cat 23 (MRC-2301-WK through MRC-2305-MO) — confirmed new format
+- Cat 24 (MRC-2401-WK through MRC-2404-MO) — confirmed new format
+
+### Repository State at v3.0.0 Baseline
+- **55 MRC stubs** with full operational content across 24 categories (Cat 25 removed)
+- **1 .docx** generated: MRC-0301-DA (Trellix ePO daily check)
+- **All stubs in new format** — uniform structure across entire library
+- **Cat 20** is the only category with no stub content — planned next cycle
+- **0 ISSM-approved** MRCs — library is pre-authorization (all cards are DRAFT)
 
 ---
 
