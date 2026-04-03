@@ -8,7 +8,7 @@ est_time: "00:20"
 rin: DA-DNS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "DNS Manager MMC (dnsmgmt.msc), PowerShell (DnsServer module), Event Viewer, dcdiag /test:dns"
+tool: "DNS management console or CLI ([SITE-DESIGNATED DNS PLATFORM]), OS event log or DNS audit log, directory DNS health diagnostic (if applicable)"
 jsig_controls: "SC-20, SC-21, SC-22, CM-6, CM-7, AU-8, AU-9"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -7,7 +7,7 @@ est_time: "45–60 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (Get-SmbShare, Get-Acl), File Server Resource Manager (FSRM), Windows Explorer (ACL review)"
+tool: "File share management CLI ([SITE-DESIGNATED FILE SERVER PLATFORM]), ACL review tool, file server resource manager (if deployed)"
 jsig_controls:
   - AC-3
   - AC-6

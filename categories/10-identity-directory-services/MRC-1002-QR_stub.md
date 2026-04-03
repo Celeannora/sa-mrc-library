@@ -7,7 +7,7 @@ est_time: "2–3 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "GPMC, PowerShell, SCC, DISA STIG GPO Package, SYSVOL"
+tool: "Group policy management console ([SITE-DESIGNATED GPO TOOL]), STIG/SCAP compliance checker, directory SYSVOL/policy store access"
 jsig_controls:
   - CM-6
   - CM-7

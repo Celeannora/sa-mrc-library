@@ -8,7 +8,7 @@ est_time: "00:45"
 rin: MO-ADRMS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Active Directory Rights Management Services console (AD RMS MMC), PowerShell (ADRMSAdmin module), Event Viewer, IIS Manager (inetmgr), SQL Server Management Studio (if RMS database is SQL-backed)"
+tool: "Rights management services console ([SITE-DESIGNATED RMS PLATFORM]), rights management CLI or PowerShell module, OS event log, web server management console, database management console (if RMS is database-backed)"
 jsig_controls: "SC-8, SC-28, AC-3, AC-16, CM-6, AU-9, SI-12"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

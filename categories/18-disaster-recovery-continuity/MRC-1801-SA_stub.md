@@ -7,7 +7,7 @@ est_time: "4–6 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Contingency Plan Document, Backup Console, OOB Management"
+tool: "Contingency Plan document (ISSM-maintained), backup console ([SITE-DESIGNATED BACKUP PLATFORM]), OOB management interface, test/restore environment"
 jsig_controls:
   - CP-2
   - CP-4

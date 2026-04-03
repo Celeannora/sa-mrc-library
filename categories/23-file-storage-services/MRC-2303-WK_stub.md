@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: WK-DFS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "DFS Management MMC (dfsmgmt.msc), PowerShell (DFSN / DFSR modules), DFS Replication Diagnostics (dfsrdiag.exe), Event Viewer, Replication State Monitor"
+tool: "Distributed file system management console or CLI ([SITE-DESIGNATED DFS PLATFORM]), DFS replication diagnostic tool, OS event log, replication state monitor"
 jsig_controls: "CM-6, CM-7, CP-9, AU-9, SC-28, SI-7"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -8,7 +8,7 @@ est_time: "00:25"
 rin: WK-DHCP-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "DHCP Manager MMC (dhcpmgmt.msc), PowerShell (DhcpServer module), Event Viewer"
+tool: "DHCP management console or CLI ([SITE-DESIGNATED DHCP PLATFORM]), OS event log"
 jsig_controls: "CM-6, CM-7, AU-9, SC-22, SI-12, AC-3"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

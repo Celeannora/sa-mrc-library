@@ -8,7 +8,7 @@ est_time: "01:00"
 rin: MO-ACC-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "Active Directory Users and Computers (ADUC / dsa.msc), PowerShell (AD Module), PAM tool (if deployed), authorized user roster (ISSM-maintained)"
+tool: "Directory services management console ([SITE-DESIGNATED DIRECTORY PLATFORM]), privileged access management (PAM) tool (if deployed), authorized user roster (ISSM-maintained)"
 jsig_controls: "AC-2, AC-2(1), AC-2(3), AC-3, AC-5, AC-6, IA-4, IA-5, AU-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -7,7 +7,7 @@ est_time: "30–60 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (Get-ChildItem Cert:\\), certlm.msc, IIS Manager (if applicable), AD CS"
+tool: "Certificate management console or CLI ([SITE-DESIGNATED PKI/CERT TOOL]), OS certificate store viewer, web server management console (if applicable)"
 jsig_controls:
   - SC-17
   - IA-3

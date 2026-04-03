@@ -7,7 +7,7 @@ est_time: "4–8 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "System SSP, ISSM Document Repository, eMASS"
+tool: "System Security Plan (SSP), ISSM document repository ([SITE-DESIGNATED PLATFORM]), authorization package management tool ([SITE-DESIGNATED TOOL — e.g., eMASS or equivalent])"
 jsig_controls:
   - PL-2
   - SA-5

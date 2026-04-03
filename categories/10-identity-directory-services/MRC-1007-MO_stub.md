@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: MO-ADLDS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "ADSI Edit (adsiedit.msc), AD LDS Setup Wizard, PowerShell (Active Directory module), Event Viewer, Services console (services.msc)"
+tool: "Directory lightweight services management console ([SITE-DESIGNATED DIRECTORY PLATFORM]), ADSI Edit or equivalent schema browser, OS event log, services console"
 jsig_controls: "IA-2, IA-4, CM-6, AU-9, AC-3, SC-28"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

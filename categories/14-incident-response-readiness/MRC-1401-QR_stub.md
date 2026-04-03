@@ -8,7 +8,7 @@ est_time: "01:00"
 rin: QR-IR-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "Current IR Plan document (ISSM-maintained), escalation contact roster, incident ticketing system, ISSM/ISSO contact"
+tool: "Current IR Plan document (ISSM-maintained), escalation contact roster, incident ticketing system ([SITE-DESIGNATED TOOL]), ISSM/ISSO contact"
 jsig_controls: "IR-3, IR-3(2), IR-4, IR-4(1), IR-8, CP-4, AU-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

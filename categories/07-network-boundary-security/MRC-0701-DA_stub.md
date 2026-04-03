@@ -8,7 +8,7 @@ est_time: "00:20"
 rin: DA-NET-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "IDS/IPS management console ([PRODUCT — e.g., Snort, Suricata, HBSS, Palo Alto Panorama]), SIEM (Splunk), firewall management console (if applicable)"
+tool: "IDS/IPS management console ([SITE-DESIGNATED IDS/IPS PLATFORM]), SIEM console ([SITE-DESIGNATED SIEM PLATFORM]), firewall management console ([SITE-DESIGNATED PLATFORM])"
 jsig_controls: "SI-4, SI-4(1), SI-4(2), SC-7, AU-6, AU-9, IR-6"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

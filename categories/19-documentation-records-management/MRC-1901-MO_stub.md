@@ -7,7 +7,7 @@ est_time: "1–2 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Document Repository, ISSM SharePoint, MRC Log Files"
+tool: "Document repository ([SITE-DESIGNATED PLATFORM]), MRC log files, ISSM document store"
 jsig_controls:
   - AU-11
   - PL-2

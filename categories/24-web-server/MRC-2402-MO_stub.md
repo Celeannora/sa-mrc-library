@@ -1,6 +1,6 @@
 ---
 mrc_id: MRC-2402-MO
-title: Monthly IIS HTTP Features Configuration and Directory Hardening Audit
+title: Monthly Web Server HTTP Features Configuration and Directory Hardening Audit
 category: 24 — Web Server (IIS)
 periodicity: MONTHLY
 maintenance_type: PREVENTIVE / INSPECT
@@ -8,7 +8,7 @@ est_time: "00:35"
 rin: MO-IIS-002
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "IIS Manager (inetmgr), PowerShell (WebAdministration module), appcmd.exe"
+tool: "Web server management console or CLI ([SITE-DESIGNATED WEB SERVER PLATFORM]), web server configuration CLI"
 jsig_controls: "CM-6, CM-7, SC-8, AC-3, AU-12"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"
@@ -19,7 +19,7 @@ docx_status: "PENDING — .docx not yet generated"
 ---
 
 ## Background (New SA)
-IIS HTTP Features are the individual role services within IIS that determine what the web server can serve and how it behaves: Static Content (plain HTML/CSS/image files), Default Document (what file to serve when a user requests just a folder path like `/`), Directory Browsing (whether IIS lists all files in a folder if no default doc is found), HTTP Errors (how error messages are displayed to the user), HTTP Redirection (automatic redirects), WebDAV (HTTP-based file reading and writing). In a SAP environment, several of these features are high-risk if enabled without authorization. **Directory browsing** reveals the full file structure of a web share to anyone who can reach it. **WebDAV** allows remote file writes and deletes via HTTP — essentially turning any web server into an unauthorized file server. This card audits the enabled HTTP feature set against the approved baseline and ensures no information-disclosure or file-upload vectors are open.
+Web Server HTTP Features are the individual role services within IIS that determine what the web server can serve and how it behaves: Static Content (plain HTML/CSS/image files), Default Document (what file to serve when a user requests just a folder path like `/`), Directory Browsing (whether IIS lists all files in a folder if no default doc is found), HTTP Errors (how error messages are displayed to the user), HTTP Redirection (automatic redirects), WebDAV (HTTP-based file reading and writing). In a SAP environment, several of these features are high-risk if enabled without authorization. **Directory browsing** reveals the full file structure of a web share to anyone who can reach it. **WebDAV** allows remote file writes and deletes via HTTP — essentially turning any web server into an unauthorized file server. This card audits the enabled HTTP feature set against the approved baseline and ensures no information-disclosure or file-upload vectors are open.
 
 ## Safety / Hazards
 JSIG: Do not enable IIS features, modules, or handlers that are not on the CCB-approved list. WebDAV enabled without CCB/ISSM authorization is a CM-7 / AC-3 violation — disable immediately and notify ISSM. Directory browsing enabled on any site must be treated as a potential information disclosure and reported to ISSM.

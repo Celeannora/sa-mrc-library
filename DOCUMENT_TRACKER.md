@@ -42,7 +42,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
-| MRC-0101-DA | Daily Security Event and Audit Log Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0101-DA | Daily SIEM Agent Health and Log Forwarding Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-0102-MO | Monthly Audit Log Archival and Retention Verification | Monthly | 🔴 | 🔴 | — | 🔴 NOT STARTED | — | — |
 | MRC-0103-SA | Daily Scripted Software Inventory Check with Change Audit Logging | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
@@ -75,6 +75,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0401-DA | Daily Backup Job Completion and Health Verification | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
+| MRC-0402-MO | Monthly Backup Restore Test and Recovery Verification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
 ---
 
@@ -82,6 +83,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
+| MRC-0501-WK | Weekly Account Activity and Anomalous Logon Review | Weekly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 | MRC-0501-MO | Monthly User Account Review and Dormant Account Audit | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
 | MRC-0502-MO | Monthly Privileged Account Recertification | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
 
@@ -100,6 +102,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0701-DA | Daily IDS/IPS and Network Alert Review | Daily | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.1 | 2026-04-02 |
+| MRC-0702-QR | Quarterly Firewall Rule and ACL Baseline Verification | Quarterly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
 ---
 
@@ -108,6 +111,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
 | MRC-0801-MO | Monthly STIG/SCAP Scan and Configuration Drift Detection | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-02 |
+| MRC-0802-MO | Monthly Approved Software List Compliance Spot-Check | Monthly | 🟢 | 🔴 | — | 🟡 DRAFT | Rev 1.0 | 2026-04-03 |
 
 ---
 
@@ -256,7 +260,7 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-## MRC Cards — Category 24: Web Server (IIS)
+## MRC Cards — Category 24: Web Server
 
 | MRC ID | Title | Periodicity | Stub | .docx | ISSM Auth | Status | Revision | Last Reviewed |
 |--------|-------|-------------|------|-------|-----------|--------|----------|---------------|
@@ -282,11 +286,11 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 01 Audit & Log Management | 3 | 2 | 0 | 0 | 33% |
 | 02 Patch & Vulnerability Mgmt | 6 | 6 | 0 | 0 | 50% |
 | 03 Antivirus / EDR | 2 | 2 | 1 | 0 | 63% |
-| 04 Backup & Recovery | 1 | 1 | 0 | 0 | 50% |
-| 05 Account & Access Management | 2 | 2 | 0 | 0 | 50% |
+| 04 Backup & Recovery | 2 | 2 | 0 | 0 | 50% |
+| 05 Account & Access Management | 3 | 3 | 0 | 0 | 50% |
 | 06 System Health & Performance | 1 | 1 | 0 | 0 | 50% |
-| 07 Network & Boundary Security | 1 | 1 | 0 | 0 | 50% |
-| 08 Configuration & Baseline | 1 | 1 | 0 | 0 | 50% |
+| 07 Network & Boundary Security | 2 | 2 | 0 | 0 | 50% |
+| 08 Configuration & Baseline | 2 | 2 | 0 | 0 | 50% |
 | 09 Certificate & PKI | 1 | 1 | 0 | 0 | 50% |
 | 10 Identity & Directory | 7 | 7 | 0 | 0 | 50% |
 | 11 Time Synchronization | 1 | 1 | 0 | 0 | 50% |
@@ -302,13 +306,14 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 | 21 Name & Address Services | 3 | 3 | 0 | 0 | 50% |
 | 22 Security & Protection | 3 | 3 | 0 | 0 | 50% |
 | 23 File & Storage Services | 8 | 8 | 0 | 0 | 50% |
-| 24 Web Server (IIS) | 4 | 4 | 0 | 0 | 50% |
+| 24 Web Server | 4 | 4 | 0 | 0 | 50% |
 | 25 Vuln Scanning | ~~3~~ | ~~3~~ | ~~0~~ | ~~0~~ | **MERGED → Cat 02** |
-| **TOTAL** | **59** | **59** | **1** | **0** | **53%** |
+| **TOTAL** | **63** | **63** | **1** | **0** | **53%** |
 
 > **v3.1.0 note:** All 57 stubs complete and in new format. Category 20 stubs added in v3.1.0 — library stub coverage is now 100%.
 > **v3.2.0 note:** MRC-0103-SA added to Category 01 — daily scripted software inventory with change audit logging (JSIG AU-2, AU-6, AU-9, CM-8, CM-8(1), SA-22, SI-7). Total MRC count: 58.
 > **v3.3.0 note:** MRC-2308-DA added to Category 23 — daily file storage hash audit and duplicate file detection (JSIG AU-2, AU-6, AU-9, CM-3, CM-8, SI-7, MP-6). Script placeholder — companion script not yet generated. Total MRC count: 59.
+> **v3.4.0 note:** Baseline normalization pass — all product-specific references replaced with [SITE-DESIGNATED] tokens across 12 highest-specificity stubs. Category 24 renamed from "Web Server (IIS)" to "Web Server". Four new gap cards added: MRC-0402-MO, MRC-0501-WK, MRC-0702-QR, MRC-0802-MO. TAILORING_GUIDE.md added. README updated to baseline philosophy. Total MRC count: 63.
 
 ---
 
@@ -325,4 +330,4 @@ Living tracker for all MRC cards, supporting documents, and templates. Update th
 
 ---
 
-*Last Updated: 2026-04-03 | Version: v3.3.0 | Classification: [CLASSIFICATION]*
+*Last Updated: 2026-04-03 | Version: v3.4.0 | Classification: [CLASSIFICATION]*

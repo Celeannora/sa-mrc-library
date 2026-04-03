@@ -4,7 +4,9 @@
 
 A structured library of **Maintenance Requirement Cards (MRCs)** for use by System Administrators operating in ISSM-governed **Special Access Program (SAP)** environments. All cards are aligned to the **Joint SAP Implementation Guide (JSIG)**, NIST SP 800-53 Rev. 5, CNSSI 1253, and DoDM 5205.07 Vol. 1. All tasks require written ISSM authorization prior to execution.
 
-**Current state:** v3.1.0 — 57 MRC stubs across 24 categories | 100% stub coverage | All cards in uniform new format
+**Current state:** v3.4.0 — 63 MRC stubs across 24 categories | 100% stub coverage | All cards in baseline-generic format
+
+> **Baseline Philosophy:** This library is a **platform-agnostic baseline**. All tool references use `[SITE-DESIGNATED <FUNCTION> PLATFORM]` tokens. Procedure steps describe *what to check* and *expected results*, not product-specific navigation paths. Site-specific tailoring is performed at deployment time. See [TAILORING_GUIDE.md](TAILORING_GUIDE.md) for the full tailoring process and token reference.
 
 ---
 
@@ -57,7 +59,8 @@ The following controls **cannot be tailored out** of any SAP system. Waiver auth
 sa-mrc-library/
 ├── README.md                         ← This file
 ├── CHANGELOG.md                      ← Version history
-├── DOCUMENT_TRACKER.md               ← Status tracker for all 57 MRC stubs
+├── DOCUMENT_TRACKER.md               ← Status tracker for all 63 MRC stubs
+├── TAILORING_GUIDE.md                ← Baseline philosophy and site customization guide
 ├── JSIG_COMPLIANCE.md                ← JSIG control mapping, non-tailorable controls
 ├── TECHNICAL_TASK_SCOPE.md           ← Daily/Weekly/Monthly SA task assignments by role
 │
@@ -81,14 +84,14 @@ sa-mrc-library/
 │   └── README.md
 │
 └── categories/                       ← 24 MRC categories — one folder per category
-    ├── 01-audit-log-management/           (1 MRC)
+    ├── 01-audit-log-management/           (3 MRCs)
     ├── 02-patch-vulnerability-management/ (6 MRCs)
     ├── 03-antivirus-edr/                  (2 MRCs)
-    ├── 04-backup-recovery/                (1 MRC)
-    ├── 05-account-access-management/      (2 MRCs)
+    ├── 04-backup-recovery/                (2 MRCs)
+    ├── 05-account-access-management/      (3 MRCs)
     ├── 06-system-health-performance/      (1 MRC)
-    ├── 07-network-boundary-security/      (1 MRC)
-    ├── 08-configuration-baseline-management/ (1 MRC)
+    ├── 07-network-boundary-security/      (2 MRCs)
+    ├── 08-configuration-baseline-management/ (2 MRCs)
     ├── 09-certificate-pki-management/     (1 MRC)
     ├── 10-identity-directory-services/    (7 MRCs)
     ├── 11-time-synchronization-ntp/       (1 MRC)
@@ -103,8 +106,8 @@ sa-mrc-library/
     ├── 20-compliance-authorization-ato/   (2 MRCs)
     ├── 21-name-address-services/          (3 MRCs)
     ├── 22-security-protection/            (3 MRCs)
-    ├── 23-file-storage-services/          (7 MRCs)
-    └── 24-web-server-iis/                 (4 MRCs)
+    ├── 23-file-storage-services/          (8 MRCs)
+    └── 24-web-server/                     (4 MRCs)
 ```
 
 ---
@@ -113,14 +116,14 @@ sa-mrc-library/
 
 | # | Category | MRCs | Key Controls | Periodicities | Non-Tailorable |
 |---|----------|:----:|-------------|--------------|:--------------:|
-| 01 | Audit & Log Management | 1 | AU-2, AU-3, AU-6, AU-9, AU-11, SI-4 | DA / MO | |
+| 01 | Audit & Log Management | 3 | AU-2, AU-3, AU-6, AU-9, AU-11, SI-4 | DA / MO | |
 | 02 | Patch & Vulnerability Management | 6 | SI-2, CM-3, CM-6, RA-5, RA-5(1), PM-4 | WK / MO | |
 | 03 | Antivirus / EDR | 2 | SI-3, SI-8, CM-6, AC-6(1) | DA / WK | ⚠️ AC-6(1) |
-| 04 | Backup & Recovery | 1 | CP-9, CP-9(1), CP-10 | DA | |
-| 05 | Account & Access Management | 2 | AC-2, AC-2(3), AC-3, AC-6, IA-4, IA-5 | MO | |
+| 04 | Backup & Recovery | 2 | CP-9, CP-9(1), CP-10 | DA / MO | |
+| 05 | Account & Access Management | 3 | AC-2, AC-2(3), AC-3, AC-6, IA-4, IA-5 | WK / MO | |
 | 06 | System Health & Performance | 1 | CA-7, SI-4, CP-9 | DA | |
-| 07 | Network & Boundary Security | 1 | SC-7, SI-4, AU-6, IR-6 | DA | |
-| 08 | Configuration & Baseline Management | 1 | CM-2, CM-6, CM-7, CM-8, SA-10 | MO | |
+| 07 | Network & Boundary Security | 2 | SC-7, SI-4, AU-6, IR-6 | DA / QR | |
+| 08 | Configuration & Baseline Management | 2 | CM-2, CM-6, CM-7, CM-8, SA-10 | MO | |
 | 09 | Certificate & PKI Management | 1 | IA-3, IA-5, SC-8, SC-17 | WK | |
 | 10 | Identity & Directory Services | 7 | IA-2, IA-4, CM-6, SC-20 | DA / WK / MO / QR | |
 | 11 | Time Synchronization (NTP) | 1 | AU-8, SC-45 | WK | |
@@ -136,7 +139,7 @@ sa-mrc-library/
 | 21 | Name & Address Services | 3 | SC-20, SC-21, SC-22, CM-6 | DA / WK / MO | |
 | 22 | Security & Protection | 3 | SC-28, CM-6, IA-7 | WK / MO | ⚠️ SC-28 |
 | 23 | File & Storage Services | 7 | AC-3, AU-9, CM-6, CP-9, SI-12 | WK / MO | |
-| 24 | Web Server (IIS) | 4 | CM-6, CM-7, AU-9, SC-8, SI-2 | WK / MO | |
+| 24 | Web Server | 4 | CM-6, CM-7, AU-9, SC-8, SI-2 | WK / MO | |
 
 **Periodicity key:** DA = Daily | WK = Weekly | MO = Monthly | QR = Quarterly | SA = Semi-Annual | AN = Annual
 
@@ -196,6 +199,18 @@ node generate-mrc.js
 
 ---
 
+## Baseline and Tailoring
+
+This library ships as a **platform-agnostic baseline**. All platform-specific references use `[SITE-DESIGNATED <FUNCTION> PLATFORM]` tokens that must be replaced with actual product names, console URLs, and navigation paths at deployment time.
+
+See **[TAILORING_GUIDE.md](TAILORING_GUIDE.md)** for:
+- Full token reference table
+- Step-by-step tailoring instructions
+- What is and is not tailorable under JSIG
+- Version control guidance for tailored copies
+
+---
+
 *Maintained by: [System Administrator Name / Team]*
 *JSIG Reference: DoD Joint SAP Implementation Guide (current version)*
-*Last Updated: April 2026 | v3.1.0*
+*Last Updated: April 2026 | v3.4.0*

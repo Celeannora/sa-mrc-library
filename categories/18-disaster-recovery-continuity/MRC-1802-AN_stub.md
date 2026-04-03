@@ -7,7 +7,7 @@ est_time: "8–16 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Backup Console, OOB Management, Test/Restore Environment"
+tool: "Backup console ([SITE-DESIGNATED BACKUP PLATFORM]), OOB management interface, test/restore environment, Contingency Plan document"
 jsig_controls:
   - CP-4
   - CP-9

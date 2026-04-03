@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: WK-BL-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "BitLocker Drive Encryption (Control Panel / manage-bde), PowerShell (BitLocker module), Microsoft BitLocker Administration and Monitoring (MBAM) if deployed, Group Policy Management Console (gpmc.msc)"
+tool: "Disk encryption management utility ([SITE-DESIGNATED ENCRYPTION TOOL]), encryption status reporting console or CLI, group policy management console (if applicable)"
 jsig_controls: "SC-28 [NON-TAILORABLE], SC-28(1), CM-6, AU-9"
 non_tailorable: "NON-TAILORABLE: SC-28 — Encryption at rest SHALL be implemented on all SAP system volumes. Any unencrypted or suspended volume is an immediate stop-work condition."
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

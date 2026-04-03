@@ -7,7 +7,7 @@ est_time: "1.5–2 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (Get-Volume, Get-Disk, Get-FileHash), Storage Spaces, iLO/iDRAC, Windows Deduplication"
+tool: "Storage capacity management console or CLI ([SITE-DESIGNATED STORAGE PLATFORM]), volume/disk management utility, OOB management interface, deduplication savings report"
 jsig_controls:
   - SI-12
   - CP-9

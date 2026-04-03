@@ -7,7 +7,7 @@ est_time: "4–6 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell, IIS Crypto, Nessus/ACAS, SCAP/SCC"
+tool: "Disk encryption management utility ([SITE-DESIGNATED ENCRYPTION TOOL]), TLS/cipher configuration tool, vulnerability scanner compliance plugins, STIG/SCAP compliance checker"
 jsig_controls:
   - SC-28
   - SC-8

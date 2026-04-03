@@ -8,7 +8,7 @@ est_time: "00:45"
 rin: MO-ADFS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "AD FS Management MMC (adfs.msc), AD FS PowerShell module, Event Viewer, IIS Manager (inetmgr)"
+tool: "Federation services management console ([SITE-DESIGNATED FEDERATION PLATFORM]), federation PowerShell or CLI module, OS event log, web server management console"
 jsig_controls: "IA-2, IA-8, IA-12, SC-8, SC-28, CM-6, AU-9"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

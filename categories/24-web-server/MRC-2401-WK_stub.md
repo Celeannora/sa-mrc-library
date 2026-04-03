@@ -1,6 +1,6 @@
 ---
 mrc_id: MRC-2401-WK
-title: Weekly IIS Web Server Service Health and Site Inventory Review
+title: Weekly Web Server Service Health and Site Inventory Review
 category: 24 — Web Server (IIS)
 periodicity: WEEKLY
 maintenance_type: PREVENTIVE / INSPECT
@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: WK-IIS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "IIS Manager (inetmgr), PowerShell (WebAdministration / IISAdministration module), Services console (services.msc), Event Viewer"
+tool: "Web server management console or CLI ([SITE-DESIGNATED WEB SERVER PLATFORM]), services console, OS event log"
 jsig_controls: "CM-6, CM-7, AC-2, AC-17, AU-9, AU-12"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -8,7 +8,7 @@ est_time: "08:00"
 rin: AN-ATO-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "System Security Plan (SSP), POA&M tracking tool (eMASS or equivalent), STIG/SCAP scan results, full-year ConMon artifact archive, risk assessment documentation, ISSM communication channel"
+tool: "System Security Plan (SSP), POA&M tracking tool ([SITE-DESIGNATED TOOL]), STIG/SCAP scan results, full-year ConMon artifact archive, risk assessment documentation"
 jsig_controls: "CA-5, CA-6, CA-6(1), CA-7, CA-7(1), RA-3, RA-3(1), PL-2, PM-4, AU-9, SI-12"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

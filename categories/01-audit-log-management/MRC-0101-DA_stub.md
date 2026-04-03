@@ -1,13 +1,13 @@
 ---
 mrc_id: MRC-0101-DA
-title: "Daily Splunk Agent Health and Log Forwarding Verification"
+title: "Daily SIEM Agent Health and Log Forwarding Verification"
 category: "01 — Audit & Log Management"
 periodicity: Daily
 est_time: "30–45 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Splunk Enterprise / Splunk Universal Forwarder, PowerShell, netstat / Test-NetConnection"
+tool: "SIEM console ([SITE-DESIGNATED SIEM PLATFORM]), log management CLI or agent, network connectivity test utility"
 jsig_controls:
   - AU-2
   - AU-6
@@ -21,26 +21,26 @@ nonlocal_maintenance: false
 docx_status: NOT STARTED
 ---
 
-# MRC-0101-DA — Daily Splunk Agent Health and Log Forwarding Verification
+# MRC-0101-DA — Daily SIEM Agent Health and Log Forwarding Verification
 
 ---
 
 ## 1. Background (New SA)
 
-**What Splunk does in this environment:**
-Splunk is the Security Information and Event Management (SIEM) platform for this SAP environment. Every managed endpoint runs a Splunk Universal Forwarder — a lightweight agent that collects Windows Event Logs, application logs, security logs, and system logs and forwards them to the central Splunk indexer (server). The ISSO and SA review the Splunk dashboard to detect security events, policy violations, and anomalies.
+**What the SIEM does in this environment:**
+The [SITE-DESIGNATED SIEM PLATFORM] is the Security Information and Event Management platform for this SAP environment. Every managed endpoint runs a SIEM forwarding agent — a lightweight agent that collects operating system event logs, application logs, security logs, and system logs and forwards them to the central SIEM server. The ISSO and SA review the SIEM dashboard to detect security events, policy violations, and anomalies.
 
 **Why daily verification matters:**
-If a forwarder stops sending data — due to a service crash, network issue, or intentional tampering — the gap in log coverage is a potential AU-9 violation and creates a blind spot for security monitoring. In an air-gapped environment with no external SOC, Splunk is the only centralized visibility tool. A silent forwarder is a security risk.
+If a forwarding agent stops sending data — due to a service crash, network issue, or intentional tampering — the gap in log coverage is a potential AU-9 violation and creates a blind spot for security monitoring. In an air-gapped environment with no external SOC, the SIEM is the only centralized visibility tool. A silent agent is a security risk.
 
 **What this MRC verifies:**
-1. The `SplunkForwarder` service is running on all managed endpoints
-2. Each forwarder is successfully communicating with the Splunk indexer on the configured port (default: TCP 9997)
-3. The Splunk indexer is receiving events from all expected sources (no missing hosts in Last 24h)
-4. Splunk disk and license usage are within operational thresholds
+1. The SIEM forwarding agent service is running on all managed endpoints
+2. Each agent is successfully communicating with the SIEM server on the configured port (site-specific)
+3. The SIEM server is receiving events from all expected sources (no missing hosts in last 24h)
+4. SIEM storage and license usage are within operational thresholds
 
 **Script reference:**
-A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available in the library to automate Steps 3–7. Run the script and review output before proceeding to manual verification steps.
+A helper script (`scripts/check-siem-agent-health.[SITE-SCRIPT-EXT]`) may be available in the library to automate agent health checks. If deployed at this site, run the script and review output before proceeding to manual verification steps.
 
 ---
 
@@ -48,9 +48,9 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 
 > ⚠️ **AUTHORIZED MAINTENANCE ONLY:** This MRC must be executed within an ISSM-authorized maintenance window (MA-2).
 
-> ⚠️ **DO NOT RESTART SPLUNK WITHOUT AUTHORIZATION:** If the SplunkForwarder service is stopped, do not restart it without first documenting the finding and confirming the restart is within your current ISSM authorization. A stopped forwarder may be evidence of a tampering event — restart could overwrite volatile indicators.
+> ⚠️ **DO NOT RESTART SIEM AGENT WITHOUT AUTHORIZATION:** If the SIEM forwarding agent service is stopped, do not restart it without first documenting the finding and confirming the restart is within your current ISSM authorization. A stopped agent may be evidence of a tampering event — restart could overwrite volatile indicators.
 
-> ⚠️ **AU-9 COMPLIANCE:** If any host is found not forwarding logs to Splunk for more than [ISSM-defined threshold], notify the ISSM immediately. Gaps in audit log coverage are a potential compliance finding.
+> ⚠️ **AU-9 COMPLIANCE:** If any host is found not forwarding logs to the SIEM for more than [ISSM-defined threshold], notify the ISSM immediately. Gaps in audit log coverage are a potential compliance finding.
 
 ---
 
@@ -58,10 +58,10 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 
 | Item | Details |
 |------|---------|
-| Splunk Web (admin) | Access to Splunk Search & Reporting, Monitoring Console |
-| Domain Admin or equivalent | Remote service status checks via PowerShell |
-| PowerShell (elevated) | `Get-Service`, `Test-NetConnection` cmdlets |
-| `Check-SplunkForwarders.ps1` | Library script — `scripts/Check-SplunkForwarders.ps1` |
+| SIEM Console (admin) | Access to [SITE-DESIGNATED SIEM PLATFORM] — event search, agent monitoring, infrastructure view |
+| Administrative account (appropriate privilege level) | Remote service status checks via [SITE-DESIGNATED MANAGEMENT TOOL] |
+| Agent management CLI or console | Service status and connectivity verification |
+| `check-siem-agent-health.[EXT]` | Library script — `scripts/` directory — if deployed at this site |
 | Managed host inventory | Full list of all hosts expected to forward logs |
 | MRC Sign-Off Block | Signed by SA and ISSM/ISSO after completion |
 
@@ -72,10 +72,10 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 | Document | Location |
 |----------|----------|
 | JSIG AU-2, AU-6, AU-9 Implementation Guidance | ISSM SharePoint / SAP Cybersecurity Binder |
-| Splunk Universal Forwarder Admin Guide | https://docs.splunk.com/Documentation/Forwarder |
-| Splunk Monitoring Console Docs | https://docs.splunk.com/Documentation/Splunk/latest/DMC/Intro |
+| [SITE-DESIGNATED SIEM PLATFORM] Administration and Agent Guide | Vendor documentation — obtain via ISSM-approved source |
+| [SITE-DESIGNATED SIEM PLATFORM] Monitoring and Infrastructure View Docs | Vendor documentation — obtain via ISSM-approved source |
 | Managed Host Inventory | SA Document Repository / CMDB |
-| MRC-0102-WK | Weekly Splunk Index Health and Retention Audit (cross-reference) |
+| MRC-0102-WK | Weekly SIEM Index Health and Retention Audit (cross-reference) |
 
 ---
 
@@ -90,10 +90,10 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 ## 6. Prerequisites (JSIG MA-2)
 
 - [ ] ISSM written authorization on file for this maintenance cycle
-- [ ] Splunk Web admin credentials available
+- [ ] SIEM console admin credentials available
 - [ ] Managed host inventory current
-- [ ] `Check-SplunkForwarders.ps1` script available and tested
-- [ ] PowerShell remoting available to all managed hosts (or local access)
+- [ ] Agent health check script available and tested (if deployed at this site)
+- [ ] Management access available to all managed hosts (remote or local)
 
 ---
 
@@ -101,28 +101,28 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
-| 1 | Run the Splunk forwarder health script | `cd C:\scripts` (or library path) → `.\Check-SplunkForwarders.ps1` | Script outputs per-host: service status, port connectivity, last event time |
-| 2 | Review script output — identify any hosts with service DOWN or port FAIL | Script console output | All hosts: `SplunkForwarder: Running`, `Port 9997: OPEN` |
-| 3 | Log in to Splunk Web | Browser → `https://[splunk-server]:8000` → Admin credentials | Splunk Search & Reporting dashboard loads |
-| 4 | Open Monitoring Console | Splunk Web → Settings → Monitoring Console | Monitoring Console home loads |
-| 5 | Review Forwarder monitoring — check all forwarders | Monitoring Console → Forwarders → Forwarder Management | All expected hosts listed as `Connected`; Last Event time within last 60 minutes |
-| 6 | Identify any host with Last Event older than 60 minutes | Forwarder Management → Sort by Last Event | Any host > 60 min = document in findings (see Section 10) |
-| 7 | Identify any host completely absent from forwarder list | Compare forwarder list to managed host inventory | Missing host = document as finding; notify ISSM if absence > ISSM-defined threshold |
-| 8 | Run search for last 24 hours — verify all hosts have events | Splunk Search → `index=* earliest=-24h \| stats latest(_time) as last_event by host \| sort last_event` | Every managed host appears with a last_event within the last 24 hours |
-| 9 | For any host in Step 6–7: verify SplunkForwarder service status manually | `Get-Service -ComputerName [hostname] -Name SplunkForwarder` | Service `Running` = forwarding issue; Service `Stopped` = document + notify per AU-9 threshold |
-| 10 | Verify port 9997 connectivity from forwarder to indexer | `Test-NetConnection -ComputerName [splunk-server] -Port 9997` (run from affected host) | `TcpTestSucceeded: True` |
-| 11 | If port CLOSED: check Windows Firewall on forwarder host | `Get-NetFirewallRule -DisplayName "*Splunk*"` | Rule present and enabled; if missing, document and notify ISSM before any change |
-| 12 | Review Splunk indexer disk usage | Monitoring Console → Indexing → Indexes → Review disk usage per index | All indexes within configured max size; no index at 100% capacity |
-| 13 | Review Splunk license usage (if applicable) | Monitoring Console → License Usage | Daily usage within licensed limit; no license warning or violation |
+| 1 | Run the SIEM agent health check script (if deployed) | Navigate to the script directory → execute the site-deployed agent health script | Script outputs per-host: agent service status, connectivity status, last event time — or proceed to Step 3 if script not deployed |
+| 2 | Review script output — identify any hosts with agent service DOWN or connectivity FAIL | Script console output | All hosts: SIEM agent service Running, SIEM server port OPEN |
+| 3 | Log in to SIEM console | Browser or application → [SITE-DESIGNATED SIEM PLATFORM] URL → Admin credentials | SIEM dashboard loads |
+| 4 | Open agent/forwarder monitoring view | SIEM console → [SITE-SPECIFIC NAV: infrastructure or monitoring view] | Agent monitoring dashboard loads |
+| 5 | Review agent status — check all managed hosts | Agent monitoring view → agent list | All expected hosts listed as Connected; Last Event time within last 60 minutes |
+| 6 | Identify any host with Last Event older than 60 minutes | Agent list → sort by last event time | Any host > 60 min = document in findings (see Section 10) |
+| 7 | Identify any host completely absent from agent list | Compare agent list to managed host inventory | Missing host = document as finding; notify ISSM if absence > ISSM-defined threshold |
+| 8 | Search for events from last 24 hours — verify all hosts have events | SIEM search interface → query all events from last 24 hours, grouped by source host | Every managed host appears with a last_event within the last 24 hours |
+| 9 | For any host in Step 6–7: verify SIEM agent service status manually | Access host via [SITE-DESIGNATED MANAGEMENT METHOD] → check SIEM agent service status | Agent Running = possible connectivity issue; Agent Stopped = document + notify per AU-9 threshold |
+| 10 | Verify network connectivity from agent host to SIEM server on configured port | Use site-appropriate connectivity test (e.g., port test utility) from the affected host to the SIEM server on [SITE-CONFIGURED SIEM PORT] | Connectivity confirmed: port open and reachable |
+| 11 | If port CLOSED: check host firewall rules for SIEM agent traffic | Review host firewall rules via [SITE-DESIGNATED FIREWALL MANAGEMENT METHOD] — confirm SIEM agent outbound rule is present and enabled | Rule present and enabled; if missing, document and notify ISSM before any change |
+| 12 | Review SIEM server storage usage | SIEM console → [SITE-SPECIFIC: storage or index management view] → review storage per index or data source | All storage within configured threshold; no index or data store at capacity |
+| 13 | Review SIEM license usage (if applicable) | SIEM console → [SITE-SPECIFIC: license or capacity view] | Daily usage within licensed limit; no license warning or violation |
 | 14 | Document all hosts checked in the Forwarder Status Table (Section 8) | | All rows populated |
 | 15 | Log any findings in the Non-Compliance / Findings Log (Section 10) | | All findings documented |
 | 16 | Complete Findings Summary and Sign-Off block (Sections 11–12) | | SA signature obtained |
 
 ---
 
-## 8. Forwarder Status Table
+## 8. Agent Status Table
 
-| # | Hostname | Service Status | Port 9997 | Last Event (Splunk) | Last Event Age | Result | Notes |
+| # | Hostname | Agent Service Status | Port Status | Last Event (SIEM) | Last Event Age | Result | Notes |
 |---|----------|---------------|-----------|---------------------|----------------|--------|-------|
 | 1 | | | | | | | |
 | 2 | | | | | | | |
@@ -133,11 +133,11 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 | 7 | | | | | | | |
 | 8 | | | | | | | |
 
-*Service Status: RUNNING / STOPPED / UNKNOWN | Port 9997: OPEN / CLOSED | Result: PASS / FAIL / FINDING*
+*Service Status: RUNNING / STOPPED / UNKNOWN | Port Status: OPEN / CLOSED | Result: PASS / FAIL / FINDING*
 
 ---
 
-## 9. Splunk Infrastructure Summary
+## 9. SIEM Infrastructure Summary
 
 | Metric | Value | Status |
 |--------|-------|--------|
@@ -146,7 +146,7 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 | Forwarders missing / silent | | |
 | Hosts with event gap > 60 min | | |
 | Indexer disk usage (%) | | |
-| License usage (GB/day) | | |
+| License / capacity usage | | |
 | ISSM notified of findings | Y / N | |
 
 ---
@@ -163,10 +163,10 @@ A PowerShell helper script (`scripts/Check-SplunkForwarders.ps1`) is available i
 
 ## 11. Findings Summary
 
-- [ ] All forwarders active — no log gaps detected
+- [ ] All SIEM agents active — no log gaps detected
 - [ ] One or more hosts not forwarding — documented and escalated per AU-9 threshold
-- [ ] Splunk port connectivity failure on one or more hosts — documented
-- [ ] Indexer disk or license approaching limit — documented
+- [ ] SIEM agent connectivity failure on one or more hosts — documented
+- [ ] SIEM storage or license approaching limit — documented
 - [ ] No findings — all systems reporting normally
 
 ---

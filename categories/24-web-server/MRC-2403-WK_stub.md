@@ -1,6 +1,6 @@
 ---
 mrc_id: MRC-2403-WK
-title: Weekly IIS Security Configuration and Authentication Audit
+title: Weekly Web Server Security Configuration and Authentication Audit
 category: 24 — Web Server (IIS)
 periodicity: WEEKLY
 maintenance_type: PREVENTIVE / INSPECT
@@ -8,7 +8,7 @@ est_time: "00:40"
 rin: WK-IIS-003
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "IIS Manager (inetmgr), PowerShell (WebAdministration module), IIS Crypto (if available), Qualys / NESSUS TLS scan results, Event Viewer"
+tool: "Web server management console or CLI ([SITE-DESIGNATED WEB SERVER PLATFORM]), TLS/cipher configuration tool, vulnerability scanner TLS scan results, OS event log"
 jsig_controls: "AC-3, AC-17, SC-8, SC-8(1), CM-6, CM-7, AU-9, AU-12, IA-2"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

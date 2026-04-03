@@ -7,7 +7,7 @@ est_time: "1.5–2 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "SCCM Software Inventory, PowerShell, Nessus/ACAS Plugin 20811 (EOL), Approved Software List"
+tool: "Software inventory or CMDB tool ([SITE-DESIGNATED TOOL]), vulnerability scanner EOL plugin, approved software list (ISSM-maintained)"
 jsig_controls:
   - SA-22
   - CM-7

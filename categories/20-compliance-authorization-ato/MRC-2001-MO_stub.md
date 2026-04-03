@@ -8,7 +8,7 @@ est_time: "01:00"
 rin: MO-ATO-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "POA&M tracking tool (eMASS, spreadsheet, or ISSM-designated system), ATO authorization letter (on file), System Security Plan (SSP), ISSM communication channel"
+tool: "POA&M tracking tool ([SITE-DESIGNATED TOOL — e.g., eMASS, spreadsheet]), ATO authorization letter (on file), System Security Plan (SSP), ISSM communication channel"
 jsig_controls: "CA-5, CA-6, CA-7, CA-7(1), RA-3, PM-4, AU-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

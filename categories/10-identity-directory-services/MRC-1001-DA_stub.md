@@ -7,7 +7,7 @@ est_time: "20–30 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "repadmin, dcdiag, PowerShell, ADUC, DNS Manager, DHCP Manager"
+tool: "Directory services replication and health tools ([SITE-DESIGNATED DIRECTORY PLATFORM CLI — e.g., repadmin, dcdiag or equivalent]), DNS management console, directory management console"
 jsig_controls:
   - AU-2
   - IA-2
@@ -27,12 +27,12 @@ docx_status: NOT STARTED
 
 ## 1. Background (New SA)
 
-**Why Active Directory health is a daily check:**
-Active Directory (AD) is the foundation of every authentication, authorization, and Group Policy function in the environment. If AD replication breaks between domain controllers, one DC may have stale data — wrong passwords, old GPOs, missing accounts. In a SAP environment, a broken DC means failed authentication, and failed authentication means the SA can't do their job — or worse, it creates security gaps.
+**Why directory services health is a daily check:**
+The [SITE-DESIGNATED DIRECTORY PLATFORM] is the foundation of every authentication, authorization, and policy function in the environment. If replication breaks between directory servers, one server may have stale data — wrong passwords, old policies, missing accounts. In a SAP environment, a broken directory server means failed authentication, and failed authentication means the SA can't do their job — or worse, it creates security gaps.
 
 **Three components:**
 
-1. **DC Replication Health (Script-assisted):** `repadmin /replsummary` gives a fast summary of replication status across all DCs. `dcdiag` runs a comprehensive suite of DC health tests. A helper script runs both and outputs a single report.
+1. **Directory Replication Health (Script-assisted):** The site-designated replication health tool provides a summary of replication status across all directory servers. A helper script may also consolidate this output into a single report.
 
 2. **DNS Zone Integrity:** DNS is how every host finds every other host. Missing or stale DNS records can break services silently. This check verifies key records exist and resolve correctly.
 
@@ -42,7 +42,7 @@ Active Directory (AD) is the foundation of every authentication, authorization, 
 
 ## 2. Safety / Hazards
 
-> ⚠️ **REPLICATION FAILURE > 30 MINUTES:** AD replication failure lasting more than 30 minutes is a Tier 2 escalation to ISSO. If it extends to USN rollback or lingering objects, notify ISSM immediately — data integrity may be compromised.
+> ⚠️ **REPLICATION FAILURE > 30 MINUTES:** Directory replication failure lasting more than 30 minutes is a Tier 2 escalation to ISSO. If it extends to data corruption or lingering object conditions, notify ISSM immediately — data integrity may be compromised.
 
 > ⚠️ **AUTHORIZED MAINTENANCE ONLY:** ISSM written authorization required (MA-2).
 
@@ -52,12 +52,12 @@ Active Directory (AD) is the foundation of every authentication, authorization, 
 
 | Item | Details |
 |------|---------|
-| `Invoke-DCHealthCheck.ps1` | Library script — `scripts/Invoke-DCHealthCheck.ps1` |
-| `repadmin` | Built-in Windows tool — run on DC or admin workstation |
-| `dcdiag` | Built-in Windows tool — run on each DC |
-| DNS Manager | Server Manager → DNS |
-| DHCP Manager | Server Manager → DHCP |
-| Domain Admin credentials | Required for repadmin, dcdiag, DNS, DHCP |
+| `invoke-dc-health.[SITE-SCRIPT-EXT]` | Library script — `scripts/invoke-dc-health.[SITE-SCRIPT-EXT]` — if deployed at this site |
+| Directory replication tool | [SITE-DESIGNATED DIRECTORY PLATFORM] replication health utility (e.g., repadmin, or platform equivalent) |
+| Directory health diagnostic tool | [SITE-DESIGNATED DIRECTORY PLATFORM] health diagnostic tool (e.g., dcdiag, or platform equivalent) |
+| DNS management console | [SITE-DESIGNATED DNS MANAGEMENT METHOD] |
+| DHCP management console | [SITE-DESIGNATED DHCP MANAGEMENT METHOD] |
+| Directory administrative credentials | Required for replication tools, DNS, and DHCP management |
 
 ---
 
@@ -67,32 +67,32 @@ Active Directory (AD) is the foundation of every authentication, authorization, 
 
 | Step | Action | Command | Expected Result |
 |------|--------|---------|-----------------|
-| 1 | Run DC health script | `.\Invoke-DCHealthCheck.ps1` | Consolidated report: replication status, SYSVOL, NETLOGON, DNS for all DCs |
-| 2 | Run replication summary | `repadmin /replsummary` | All DCs: `0 failures`, `0 consecutive failures` |
-| 3 | Check for replication errors | `repadmin /showrepl * /csv > repl-report.csv` | No ERROR entries in CSV output |
-| 4 | Run dcdiag on each DC | `dcdiag /test:replications /test:netlogons /test:fsmocheck /test:ridmanager` | All tests: `passed` |
-| 5 | Verify SYSVOL replication (DFS-R) | `dfsrdiag ReplicationState /member:[dcname]` | State: `4 (Normal)` on all DCs |
-| 6 | Verify NETLOGON service running on all DCs | `Get-Service -ComputerName [all DCs] -Name Netlogon` | Status: `Running` |
-| 7 | Any replication error or failed dcdiag test | Document immediately; notify ISSO; if > 30 min = Tier 2 escalation | Finding logged |
+| 1 | Run directory health script (if deployed) | Execute `invoke-dc-health.[SITE-SCRIPT-EXT]` at [SITE-DESIGNATED SCRIPT PATH] | Consolidated report: replication status, directory service health, DNS for all servers — or proceed to Step 2 if script not deployed |
+| 2 | Run replication summary | Execute replication health utility ([SITE-DESIGNATED TOOL — e.g., repadmin /replsummary or platform equivalent]) | All directory servers: 0 failures, 0 consecutive failures |
+| 3 | Check for replication errors | Run detailed replication report ([SITE-DESIGNATED TOOL — e.g., repadmin /showrepl or platform equivalent]) → export or review output | No ERROR entries in output |
+| 4 | Run directory health diagnostics on each server | Execute directory health diagnostic tool ([SITE-DESIGNATED TOOL — e.g., dcdiag or platform equivalent]) with replication, netlogon, and role-master tests | All tests: passed |
+| 5 | Verify policy/SYSVOL replication state | Check SYSVOL or equivalent policy replication state via [SITE-DESIGNATED TOOL — e.g., dfsrdiag or platform equivalent] on each server | Replication state: Normal on all servers |
+| 6 | Verify authentication and logon service running on all directory servers | Check Netlogon or equivalent authentication service status via remote or local service management | Status: Running on all servers |
+| 7 | Any replication error or failed directory health diagnostic test | Document immediately; notify ISSO; if > 30 min = Tier 2 escalation | Finding logged |
 
 ### Phase 2 — DNS Zone Integrity
 
 | Step | Action | Command | Expected Result |
 |------|--------|---------|-----------------|
-| 8 | Verify DNS service running on DNS server(s) | `Get-Service -ComputerName [dns-server] -Name DNS` | Status: `Running` |
-| 9 | Test name resolution — domain name | `Resolve-DnsName [domain FQDN] -Type SOA` | SOA record resolves to correct DC |
-| 10 | Test key A records | `Resolve-DnsName [server1.domain.fqdn]` — repeat for all critical servers | All records resolve to correct IP |
-| 11 | Test SRV records (Kerberos, LDAP) | `Resolve-DnsName _kerberos._tcp.[domain] -Type SRV` | Kerberos SRV records resolve to correct DCs |
-| 12 | Check for DNS zone transfer restrictions | DNS Manager → Zone Properties → Zone Transfers | Transfers restricted to authorized secondary DNS servers only |
+| 8 | Verify DNS service running on DNS server(s) | Check DNS service status via [SITE-DESIGNATED MANAGEMENT METHOD] | Status: Running |
+| 9 | Test name resolution — domain name | Use DNS query tool (e.g., Resolve-DnsName, nslookup, dig, or equivalent) → query SOA record for the domain FQDN | SOA record resolves to correct directory server |
+| 10 | Test key A records | Use DNS query tool → resolve hostname of each critical server | All records resolve to correct IP |
+| 11 | Test SRV records (Kerberos, LDAP) | Use DNS query tool → query SRV records for Kerberos and LDAP (e.g., `_kerberos._tcp.[domain]`, `_ldap._tcp.[domain]`) | SRV records resolve to correct directory servers |
+| 12 | Check for DNS zone transfer restrictions | DNS management console → zone properties → zone transfers settings | Transfers restricted to authorized secondary DNS servers only |
 | 13 | Any missing or incorrect DNS record | Document; investigate; notify ISSO | Finding logged |
 
 ### Phase 3 — DHCP Scope Baseline Review
 
 | Step | Action | Command | Expected Result |
 |------|--------|---------|-----------------|
-| 14 | Open DHCP Manager | Server Manager → Tools → DHCP | DHCP console loads |
-| 15 | Review each scope — leases in use vs. total | DHCP → [Server] → IPv4 → [Scope] → Scope properties → Statistics | No scope above 85% utilization |
-| 16 | Review active leases — spot-check for unexpected hostnames | DHCP → [Scope] → Address Leases | All leases match known managed hosts; no unexpected entries |
+| 14 | Open DHCP management console | [SITE-DESIGNATED DHCP MANAGEMENT METHOD] | DHCP console loads |
+| 15 | Review each scope — leases in use vs. total | DHCP console → server → scope statistics | No scope above 85% utilization |
+| 16 | Review active leases — spot-check for unexpected hostnames | DHCP console → scope → address leases | All leases match known managed hosts; no unexpected entries |
 | 17 | Any unexpected lease (unknown hostname/MAC) | Document; investigate; notify ISSM — potential unauthorized device | Finding logged |
 | 18 | Any scope above 85% utilization | Document; notify ISSO; plan scope expansion or address reclamation | Finding logged |
 
@@ -100,7 +100,7 @@ Active Directory (AD) is the foundation of every authentication, authorization, 
 
 ## 8. Daily DC / DNS / DHCP Status Table
 
-| # | DC / Server | Replication | dcdiag | SYSVOL | DNS Res. | DHCP Scope | Result | Notes |
+| # | Directory Server | Replication | Health Check | Policy Replication | DNS Res. | DHCP Scope | Result | Notes |
 |---|------------|------------|--------|--------|---------|-----------|--------|-------|
 | 1 | | | | | | | | |
 | 2 | | | | | | | | |

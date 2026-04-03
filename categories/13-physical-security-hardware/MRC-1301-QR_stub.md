@@ -7,7 +7,7 @@ est_time: "2–3 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "iLO/iDRAC OOB Console, SCCM Hardware Inventory, Vendor Firmware Portals (external workstation), PowerShell"
+tool: "OOB management interface (iLO/iDRAC/BMC or equivalent), hardware inventory or CMDB ([SITE-DESIGNATED TOOL]), vendor firmware portals (external workstation), OS management console"
 jsig_controls:
   - SA-22
   - CM-8

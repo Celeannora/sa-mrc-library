@@ -7,7 +7,7 @@ est_time: "30–45 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "w32tm, PowerShell, `Invoke-NTPAudit.ps1`"
+tool: "Time synchronization CLI or status utility ([SITE-DESIGNATED NTP CLIENT — e.g., w32tm, ntpq, chronyc]), OS event log or syslog, NTP audit script (if deployed)"
 jsig_controls:
   - AU-8
   - SC-45

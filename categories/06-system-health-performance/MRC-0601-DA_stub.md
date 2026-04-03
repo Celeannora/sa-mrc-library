@@ -7,7 +7,7 @@ est_time: "30–45 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell, Windows Server Manager, iLO/iDRAC, SCCM/Endpoint Manager, Server console"
+tool: "System health and monitoring console ([SITE-DESIGNATED MONITORING PLATFORM]), OOB management interface (iLO/iDRAC/BMC or equivalent), OS management console"
 jsig_controls:
   - SI-2
   - CM-6

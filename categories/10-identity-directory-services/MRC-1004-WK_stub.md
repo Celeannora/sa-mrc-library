@@ -8,7 +8,7 @@ est_time: "00:45"
 rin: WK-ADDS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Active Directory Users and Computers (ADUC), Active Directory Administrative Center (ADAC), Windows PowerShell (AD Module), Event Viewer"
+tool: "Directory services management console ([SITE-DESIGNATED DIRECTORY PLATFORM]), directory administrative center, OS event log or directory audit log"
 jsig_controls: "IA-2, IA-4, IA-5, CM-6, AU-9, SC-20, AC-2"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

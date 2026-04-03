@@ -8,7 +8,7 @@ est_time: "00:40"
 rin: WK-FS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Server Manager, Share and Storage Management (storagemgmt.msc), PowerShell (SmbShare / NTFSSecurity modules), Computer Management (compmgmt.msc), File Explorer (for ACL review)"
+tool: "File share management console or CLI ([SITE-DESIGNATED FILE SERVER PLATFORM]), ACL review tool, OS management console"
 jsig_controls: "AC-3, AC-6, CM-6, CM-7, AU-9, SC-28"
 non_tailorable: "N/A — SC-28 applies to the underlying volume (see MRC-2201-WK); verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"
@@ -19,22 +19,23 @@ docx_status: "PENDING — .docx not yet generated"
 ---
 
 ## Background (New SA)
-A File Server hosts SMB (Windows file sharing) shares — the network folders that users and systems access to store and retrieve files. In a SAP environment, file shares hold classified working documents, system logs, scripts, and backup data. Access to these shares is controlled by two layers of permissions: Share Permissions (who can connect to the share at all) and NTFS ACLs (what they can read, write, or execute inside it). Both must be configured correctly. A single misconfigured share — especially one with "Everyone" having Full Control — can expose classified data to anyone on the network. This card verifies that all shares are authorized, permissions follow least privilege, and no unexpected shares have appeared.
+A file server hosts network shares — the shared folders that users and systems access to store and retrieve files. In a SAP environment, file shares hold classified working documents, system logs, scripts, and backup data. Access to these shares is controlled by two layers of permissions: Share Permissions (who can connect to the share at all) and File System ACLs (what they can read, write, or execute inside it). Both must be configured correctly. A single misconfigured share — especially one with broad group access having full control — can expose classified data to anyone on the network. This card verifies that all shares are authorized, permissions follow least privilege, and no unexpected shares have appeared. Navigation paths and commands must be tailored to the [SITE-DESIGNATED FILE SERVER PLATFORM] at time of site deployment.
 
 ## Safety / Hazards
-JSIG: Do not create, modify, or delete file shares, share permissions, or NTFS ACLs without a CCB-approved Change Request and ISSM written authorization. Discovery of "Everyone" or "Authenticated Users" with write/modify access on a classified share is an immediate AC-3 / AC-6 violation — stop and notify ISSM. Do not delete shares that may be in active use without ISSM authorization.
+JSIG: Do not create, modify, or delete file shares, share permissions, or file system ACLs without a CCB-approved Change Request and ISSM written authorization. Discovery of broad groups (e.g., Everyone or Authenticated Users) with write/modify access on a classified share is an immediate AC-3 / AC-6 violation — stop and notify ISSM. Do not delete shares that may be in active use without ISSM authorization.
 
 ## Tools / Equipment / Access Required
-- PowerShell: `Get-SmbShare`, `Get-SmbShareAccess`, `Get-Acl`
-- Computer Management — `compmgmt.msc` > `Shared Folders > Shares`
-- Server Manager > File and Storage Services > Shares
-- Optional: `NTFSSecurity` PowerShell module for deeper NTFS ACL reporting
+- File share management console or CLI — [SITE-DESIGNATED FILE SERVER PLATFORM] management tool
+- Share enumeration tool: [SITE-SPECIFIC — e.g., Get-SmbShare, net share, or platform equivalent]
+- Share permission review tool: [SITE-SPECIFIC — e.g., Get-SmbShareAccess or platform equivalent]
+- File system ACL review tool: [SITE-SPECIFIC — e.g., Get-Acl, icacls, platform GUI, or equivalent]
+- Optional: platform-specific ACL reporting module for deeper enumeration
 - ISSM/ISSO contact for escalation
 - Authorized share baseline (from ISSM authorization records)
 
 ## Reference Documents
 - JSIG — AC-3, AC-6, CM-6, CM-7, AU-9
-- DISA STIG — Windows Server File Server benchmark
+- DISA STIG — applicable File Server benchmark for the deployed OS/platform
 - DoDM 5205.07 Vol. 1 — ISSM/ISSO responsibilities
 - MA-3 Approved Tool List
 - Site-specific authorized share list (ISSM-signed)
@@ -53,16 +54,16 @@ JSIG: Do not create, modify, or delete file shares, share permissions, or NTFS A
 
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|-------------------|----------------|
-| 1 | Enumerate all SMB shares on the file server | `Get-SmbShare` | Share list matches authorized baseline; no unauthorized shares |
-| 2 | Identify any unauthorized or unexpected shares | Compare `Get-SmbShare` output to approved share list; flag any not on the list | Zero unauthorized shares; any found reported to ISSM |
-| 3 | Check for hidden shares (ending in `$`) beyond standard admin shares | `Get-SmbShare \| Where-Object {$_.Name -like "*$"}` — review against baseline | Only authorized hidden shares present |
-| 4 | Review share-level permissions for each classified share | `Get-SmbShareAccess -Name [SHARE-NAME]` for each share | No `Everyone`; no `Authenticated Users` with Change/Full; access limited to authorized groups |
-| 5 | **JSIG CHECK** — Flag any share with "Everyone" or broad group access | Filter: `Get-SmbShareAccess \| Where-Object {$_.AccountName -like "*Everyone*" -or $_.AccountName -like "*Authenticated Users*"}` | **Zero results. Any match = stop, notify ISSM immediately** |
-| 6 | Review NTFS ACLs on each share root folder | `(Get-Acl "[SHARE-PATH]").Access \| Select IdentityReference, FileSystemRights, AccessControlType` | ACLs match approved baseline; no unexpected identities with write/modify |
-| 7 | Verify share paths point to BitLocker-encrypted volumes | `Get-BitLockerVolume` — confirm drive letter hosting each share is `ProtectionStatus = On` | All share volumes encrypted (SC-28) |
-| 8 | Check for open files / sessions on sensitive shares | `Get-SmbSession`; `Get-SmbOpenFile` | Active sessions from authorized users only; unusual off-hours access documented |
-| 9 | Verify file server auditing (object access) is enabled via GPO | `gpresult /r` — confirm audit policy GPO applied; `auditpol /get /category:"Object Access"` | Object Access auditing enabled: Success and Failure |
-| 10 | Review share-related security events in Event Log (last 7 days) | `Event Viewer > Security` — filter IDs: 5140 (share access), 5145 (share object access), 5142 (share added) | No unauthorized share access or new share creation events |
+| 1 | Enumerate all file shares on the file server | Use share enumeration tool ([SITE-SPECIFIC: Get-SmbShare, net share, or platform equivalent]) | Share list matches authorized baseline; no unauthorized shares |
+| 2 | Identify any unauthorized or unexpected shares | Compare enumerated share list to approved share baseline; flag any not on the list | Zero unauthorized shares; any found reported to ISSM |
+| 3 | Check for hidden shares (ending in `$`) beyond standard admin shares | Filter share list for hidden shares (names ending in `$`) and compare to authorized baseline | Only authorized hidden shares present |
+| 4 | Review share-level permissions for each classified share | Use share permission tool ([SITE-SPECIFIC: Get-SmbShareAccess or platform equivalent]) for each share | No broad groups (Everyone, Authenticated Users) with Change/Full access; access limited to authorized groups |
+| 5 | **JSIG CHECK** — Flag any share with "Everyone" or broad group access | Filter share permissions for broad access groups (Everyone, Authenticated Users, or site-equivalent) using platform query tool | **Zero results. Any match = stop, notify ISSM immediately** |
+| 6 | Review file system ACLs on each share root folder | Use ACL review tool ([SITE-SPECIFIC: Get-Acl, icacls, platform equivalent]) on each share root path | ACLs match approved baseline; no unexpected identities with write/modify |
+| 7 | Verify share paths point to encrypted volumes | Confirm volume encryption status via [SITE-DESIGNATED ENCRYPTION TOOL/METHOD] — check that the volume hosting each share has encryption protection enabled | All share volumes encrypted per SC-28 requirement |
+| 8 | Check for open files / sessions on sensitive shares | Use session/open-file query ([SITE-SPECIFIC: Get-SmbSession, Get-SmbOpenFile, or platform equivalent]) | Active sessions from authorized users only; unusual off-hours access documented |
+| 9 | Verify file server auditing (object access) is enabled | Verify audit policy via GPO result or OS audit policy query ([SITE-SPECIFIC: gpresult, auditpol, or platform equivalent]) | Object Access auditing enabled: Success and Failure |
+| 10 | Review share-related security events in the OS security event log or SIEM (last 7 days) | OS event viewer or [SITE-DESIGNATED SIEM PLATFORM] — filter for share access, share object access, and share creation/deletion events | No unauthorized share access or new share creation events |
 | 11 | Document all findings in findings log below | — | All discrepancies recorded |
 | 12 | Sign and date MRC; file as AC-3 / AC-6 BoE artifact | SA signature; ISSM/ISSO co-sign if non-compliant | MRC retained per AU-11 |
 
@@ -96,7 +97,7 @@ JSIG: Do not create, modify, or delete file shares, share permissions, or NTFS A
 - Overall Result: [ ] Satisfactory  [ ] Unsatisfactory  [ ] N/A
 - Unauthorized Shares: [ ] None  [ ] Found — ISSM notified
 - "Everyone" / Overly Permissive ACL: [ ] None  [ ] Found — ISSM notified immediately
-- NTFS ACLs Compliant: [ ] All  [ ] Deviations — documented
+- File System ACLs Compliant: [ ] All  [ ] Deviations — documented
 - Share Volumes Encrypted (SC-28): [ ] All  [ ] Not encrypted — ISSM notified
 - Object Access Auditing: [ ] Enabled  [ ] Disabled — remediated
 - Total shares reviewed: ___  Non-compliant: ___

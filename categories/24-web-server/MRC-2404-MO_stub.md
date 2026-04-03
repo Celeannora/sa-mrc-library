@@ -1,6 +1,6 @@
 ---
 mrc_id: MRC-2404-MO
-title: Monthly IIS Performance Settings and Logging Compliance Review
+title: Monthly Web Server Performance Settings and Logging Compliance Review
 category: 24 — Web Server (IIS)
 periodicity: MONTHLY
 maintenance_type: PREVENTIVE / INSPECT
@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: MO-IIS-004
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "IIS Manager (inetmgr), PowerShell (WebAdministration module), Performance Monitor (perfmon.msc), Event Viewer"
+tool: "Web server management console or CLI ([SITE-DESIGNATED WEB SERVER PLATFORM]), performance monitoring console, OS event log"
 jsig_controls: "AU-9, AU-12, CM-6, SC-8, SI-12, CP-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

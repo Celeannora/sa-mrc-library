@@ -8,7 +8,7 @@ est_time: "00:30"
 rin: MO-BC-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (BranchCache module / netsh branchcache), Group Policy Management Console (gpmc.msc), Event Viewer, Services console (services.msc)"
+tool: "Distributed caching/BranchCache management CLI or PowerShell module ([SITE-DESIGNATED PLATFORM]), group policy management console, OS event log, services console"
 jsig_controls: "CM-6, CM-7, SC-8, AC-3, AU-9, SI-7"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

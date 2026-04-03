@@ -8,7 +8,7 @@ est_time: "01:30"
 rin: MO-CCM-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "Vulnerability scanner console (Nessus / ACAS), SIEM console (Splunk or equivalent), patch management console (WSUS / SCCM), POA&M tool (eMASS or equivalent), secure artifact repository"
+tool: "Vulnerability scanner console ([SITE-DESIGNATED SCANNER]), SIEM console ([SITE-DESIGNATED SIEM PLATFORM]), patch management console ([SITE-DESIGNATED PLATFORM]), POA&M tool ([SITE-DESIGNATED TOOL]), secure artifact repository"
 jsig_controls: "CA-7, CA-7(1), PM-4, RA-5, AU-9, SI-12"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

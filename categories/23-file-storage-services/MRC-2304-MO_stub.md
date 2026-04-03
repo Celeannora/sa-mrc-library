@@ -8,7 +8,7 @@ est_time: "00:35"
 rin: MO-FSRM-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "File Server Resource Manager MMC (fsrm.msc), PowerShell (FileServerResourceManager module), Event Viewer"
+tool: "File server resource manager console or CLI ([SITE-DESIGNATED FSRM PLATFORM]), quota and file screen management interface, OS event log"
 jsig_controls: "CM-6, CM-7, SI-12, AC-6, AU-9, CP-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -93,7 +93,7 @@ This document defines the complete scope of technical tasks assignable to System
 | # | Task | JSIG Control | Est. Time | Tool Category | MRC |
 |---|------|-------------|-----------|---------------|-----|
 | W-01 | Review and archive event logs per retention policy; confirm AU-11 compliance | AU-11 | 30 min | SIEM / OS | MRC-0102-MO |
-| W-02 | Review patch management console for pending patches; categorize by severity | SI-2 | 20 min | Patch Mgmt Console | MRC-0201-MO |
+| W-02 | Review patch management console for pending patches; categorize by severity | SI-2 | 20 min | Patch Mgmt Console | MRC-0201-WK |
 | W-03 | Review open vulnerability scanner findings; assess for new CAT I items | RA-5, SI-2 | 30 min | ACAS / Nessus | MRC-0202-MO |
 | W-04 | Review failed logon attempts and lockout events for the week | AC-7, AU-6 | 15 min | SIEM / AD | MRC-0101-DA |
 
@@ -158,15 +158,15 @@ This document defines the complete scope of technical tasks assignable to System
 
 | # | Task | JSIG Control | Est. Time | Tool Category | MRC |
 |---|------|-------------|-----------|---------------|-----|
-| M-01 | Obtain CCB-approved Change Request for patch cycle; confirm ISSM authorization | CM-3, MA-2 | 1 hr | CCB Ticketing | MRC-0201-MO |
-| M-02 | Verify backup and confirm integrity before patching begins | CP-9 | 30 min | Backup Console | MRC-0201-MO |
-| M-03 | Apply approved OS patches to all in-scope systems | SI-2, CM-3 | 2 hr | Patch Mgmt Console | MRC-0201-MO |
-| M-04 | Apply approved application and middleware patches | SI-2, CM-3 | 1 hr | Patch Mgmt Console | MRC-0201-MO |
-| M-05 | Apply approved network appliance firmware updates (if scheduled) | SI-2, CM-3 | 1 hr | Vendor OOB Tools | MRC-0201-MO |
+| M-01 | Obtain CCB-approved Change Request for patch cycle; confirm ISSM authorization | CM-3, MA-2 | 1 hr | CCB Ticketing | MRC-0201-WK |
+| M-02 | Verify backup and confirm integrity before patching begins | CP-9 | 30 min | Backup Console | MRC-0201-WK |
+| M-03 | Apply approved OS patches to all in-scope systems | SI-2, CM-3 | 2 hr | Patch Mgmt Console | MRC-0201-WK |
+| M-04 | Apply approved application and middleware patches | SI-2, CM-3 | 1 hr | Patch Mgmt Console | MRC-0201-WK |
+| M-05 | Apply approved network appliance firmware updates (if scheduled) | SI-2, CM-3 | 1 hr | Vendor OOB Tools | MRC-0201-WK |
 | M-06 | Verify post-patch SC-28 compliance (encryption at rest intact) ⚠️ | SC-28 (NT) | 20 min | BitLocker / LUKS | MRC-1601-QR |
 | M-07 | Verify no EOL/unsupported components introduced by patching (SA-22) ⚠️ | SA-22 (NT) | 20 min | Inventory Tool | MRC-1701-MO |
 | M-08 | Run post-patch vulnerability scan; compare to pre-patch baseline | RA-5 | 1 hr | ACAS / Nessus | MRC-0202-MO |
-| M-09 | Update CMDB / asset inventory with new patch levels | CM-8 | 30 min | CMDB | MRC-0201-MO |
+| M-09 | Update CMDB / asset inventory with new patch levels | CM-8 | 30 min | CMDB | MRC-0201-WK |
 
 ### Vulnerability Management
 
@@ -228,8 +228,8 @@ This document defines the complete scope of technical tasks assignable to System
 
 | # | Task | JSIG Control | Est. Time | Tool Category | MRC |
 |---|------|-------------|-----------|---------------|-----|
-| M-31 | Review DNS zone integrity — verify all records are authorized; purge stale entries | SC-20, CM-6 | 30 min | DNS Admin Tools | MRC-1002-MO |
-| M-32 | Review DHCP scope utilization; identify and reclaim expired leases | CM-8 | 20 min | DHCP Console | MRC-1002-MO |
+| M-31 | Review DNS zone integrity — verify all records are authorized; purge stale entries | SC-20, CM-6 | 30 min | DNS Admin Tools | MRC-1002-QR |
+| M-32 | Review DHCP scope utilization; identify and reclaim expired leases | CM-8 | 20 min | DHCP Console | MRC-1002-QR |
 
 ### ConMon & Reporting
 

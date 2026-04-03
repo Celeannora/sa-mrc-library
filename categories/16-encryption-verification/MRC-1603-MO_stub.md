@@ -7,7 +7,7 @@ est_time: "1–2 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (Get-BitLockerVolume, AD BitLocker cmdlets), `Invoke-BitLockerADExport.ps1`, Asset Inventory (digital + physical walk)"
+tool: "Disk encryption management utility ([SITE-DESIGNATED ENCRYPTION TOOL]), key escrow export script or tool, asset inventory (digital and physical walk)"
 jsig_controls:
   - SC-28
   - CM-8

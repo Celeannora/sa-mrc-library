@@ -8,7 +8,7 @@ est_time: "00:15"
 rin: DA-BCK-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "Backup management console ([PRODUCT — e.g., Veeam, Windows Server Backup, Commvault]), backup target storage (NAS/tape), ISSM/ISSO contact"
+tool: "Backup management console ([SITE-DESIGNATED BACKUP PLATFORM]), backup target storage, ISSM/ISSO contact"
 jsig_controls: "CP-9, CP-9(1), CP-10, AU-9, SI-12"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

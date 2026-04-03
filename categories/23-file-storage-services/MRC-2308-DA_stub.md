@@ -57,7 +57,7 @@ This MRC performs a daily scripted hash audit of a designated file storage path.
 
 > ⚠️ **DO NOT DELETE DUPLICATES WITHOUT AUTHORIZATION:** Duplicate files identified by this check must be reviewed and adjudicated by the SA and ISSM before any disposition action. Unauthorized deletion of files on a classified system is an MP-6 and CM-3 violation.
 
-> ⚠️ **AU-9 COMPLIANCE — PROTECT AUDIT LOGS:** The audit log directory (`/var/log/mrc/file-storage-audit/`) must be protected from modification by non-privileged users. Do not delete, alter, or rotate logs outside of ISSM-authorized retention procedures (AU-11).
+> ⚠️ **AU-9 COMPLIANCE — PROTECT AUDIT LOGS:** The audit log directory ([SITE-DESIGNATED LOG PATH]) must be protected from modification by non-privileged users. Do not delete, alter, or rotate logs outside of ISSM-authorized retention procedures (AU-11).
 
 > ⚠️ **LARGE PATH SCAN TIMES:** Scanning very large file storage paths may take significant time. Coordinate with ISSM to ensure the scan window does not impact operations. Consider scoping the target path to critical directories if full-volume scans are impractical within the maintenance window.
 
@@ -68,7 +68,7 @@ This MRC performs a daily scripted hash audit of a designated file storage path.
 | Item | Details |
 |------|---------|
 | `check-file-storage-hashes.sh` | **PLACEHOLDER** — Script not yet generated. See Section 1 for expected behavior. Path: `scripts/check-file-storage-hashes.sh` |
-| Root / sudo access | Required to read all files under the target path and write to `/var/log/mrc/` |
+| Elevated privileges | Required to read all files under the target path and write to [SITE-DESIGNATED LOG PATH] |
 | Bash 4.0+ | Script runtime — standard on all modern Linux distributions |
 | `find` | Recursive file traversal — standard coreutils |
 | `sha256sum` | Per-file cryptographic hashing — standard coreutils |
@@ -111,7 +111,7 @@ This MRC performs a daily scripted hash audit of a designated file storage path.
 
 - [ ] ISSM written authorization on file for this maintenance cycle
 - [ ] `check-file-storage-hashes.sh` deployed and executable at `scripts/check-file-storage-hashes.sh` (**PLACEHOLDER — verify when script is generated**)
-- [ ] Log directory initialized: `/var/log/mrc/file-storage-audit/` exists with 750 permissions
+- [ ] Log directory initialized at [SITE-DESIGNATED LOG PATH] with correct permissions
 - [ ] Target folder path confirmed as in-scope per ISSM authorization
 - [ ] Root / sudo access confirmed on target host
 - [ ] Sufficient maintenance window time available for path scan to complete (estimate based on file count / storage size)
@@ -124,15 +124,15 @@ This MRC performs a daily scripted hash audit of a designated file storage path.
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
 | 1 | Log into the managed host as authorized SA account | SSH or console login → authenticate with CAC / SA credentials | Shell prompt for authorized SA account |
-| 2 | Verify the script is present and executable | `ls -la /opt/mrc/scripts/check-file-storage-hashes.sh` | File present; `-rwxr-xr-x` permissions; owner: root — **if script not yet generated, stop and note in Section 11** |
-| 3 | Run the file storage hash audit script | `sudo /opt/mrc/scripts/check-file-storage-hashes.sh` | Script prompts: `Enter target folder path to audit:` |
+| 2 | Verify the script is present and executable | Navigate to [SITE-DESIGNATED SCRIPT PATH] → verify the script file is present and has execute permissions — **if script not yet generated, stop and note in Section 11** |
+| 3 | Run the file storage hash audit script | Execute the script at [SITE-DESIGNATED SCRIPT PATH] with elevated privileges | Script prompts: `Enter target folder path to audit:` |
 | 4 | Enter the ISSM-authorized target folder path when prompted | Type full absolute path (e.g., `/mnt/classified-share/`) and press Enter | Script acknowledges path, begins recursive traversal |
 | 5 | Allow script to complete file enumeration and hashing | Wait for completion — console shows progress and per-file count | Script outputs: total files hashed, operator identity, scan path, timestamp |
 | 6 | Review script exit status | Check console: `STATUS: PASS — No duplicates` or `STATUS: DUPLICATES — [N] duplicate sets detected` | Exit code 0 (clean) or 1 (duplicates found) |
-| 7 | Confirm full hash inventory log was written | `sudo ls -la /var/log/mrc/file-storage-audit/inventory-$(date +%Y%m%d).log` | File present; non-zero size; contains one `[SHA-256] [path]` entry per file |
-| 8 | If duplicates detected — review the duplicate file list | `sudo cat /var/log/mrc/file-storage-audit/duplicates-$(date +%Y%m%d).log` | Lists each duplicate set: SHA-256 hash followed by all file paths sharing that hash |
-| 9 | Confirm operator identity is recorded in the log | `sudo grep "OPERATOR:" /var/log/mrc/file-storage-audit/inventory-$(date +%Y%m%d).log` | Line present: `OPERATOR: [sa-username] @ [hostname] — [timestamp]` |
-| 10 | Confirm scanned path is recorded in the log | `sudo grep "SCAN PATH:" /var/log/mrc/file-storage-audit/inventory-$(date +%Y%m%d).log` | Line present: `SCAN PATH: [absolute path entered at prompt]` |
+| 7 | Confirm full hash inventory log was written | Navigate to [SITE-DESIGNATED LOG PATH] → verify today's inventory log file is present and non-zero size | File present; non-zero size; contains one `[SHA-256] [path]` entry per file |
+| 8 | If duplicates detected — review the duplicate file list | Navigate to [SITE-DESIGNATED LOG PATH] → open today's duplicate file list | Lists each duplicate set: SHA-256 hash followed by all file paths sharing that hash |
+| 9 | Confirm operator identity is recorded in the log | Open today's inventory log at [SITE-DESIGNATED LOG PATH] → search for OPERATOR entry | Line present: `OPERATOR: [sa-username] @ [hostname] — [timestamp]` |
+| 10 | Confirm scanned path is recorded in the log | Open today's inventory log at [SITE-DESIGNATED LOG PATH] → search for SCAN PATH entry | Line present: `SCAN PATH: [absolute path entered at prompt]` |
 | 11 | For each duplicate set — review and adjudicate per Section 9 | Cross-reference duplicate file paths against authorized file inventory and recent change records | Determine: authorized duplicate (document) or unauthorized — notify ISSM |
 | 12 | Report unauthorized duplicates or unexpected file additions to ISSM | Phone / secure message per site SOP | ISSM notified; response documented in Section 10 |
 | 13 | Complete Scan Summary table (Section 8) | | All fields populated |
@@ -155,8 +155,8 @@ This MRC performs a daily scripted hash audit of a designated file storage path.
 | Total Unique SHA-256 Hashes | |
 | Duplicate Sets Detected | |
 | Total Duplicate Files (across all sets) | |
-| Log File Path | `/var/log/mrc/file-storage-audit/inventory-YYYYMMDD.log` |
-| Duplicate List Path | `/var/log/mrc/file-storage-audit/duplicates-YYYYMMDD.log` |
+| Log File Path | [SITE-DESIGNATED LOG PATH]/inventory-YYYYMMDD.log |
+| Duplicate List Path | [SITE-DESIGNATED LOG PATH]/duplicates-YYYYMMDD.log |
 | Overall Status | PASS / DUPLICATES DETECTED / SCRIPT NOT YET GENERATED / ERROR |
 
 ---

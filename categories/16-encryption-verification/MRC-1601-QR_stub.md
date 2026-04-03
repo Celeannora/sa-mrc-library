@@ -7,7 +7,7 @@ est_time: "2–3 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "BitLocker (manage-bde), PowerShell, iLO/iDRAC"
+tool: "Disk encryption management utility ([SITE-DESIGNATED ENCRYPTION TOOL — e.g., manage-bde, cryptsetup/LUKS, or equivalent]), OOB management interface"
 jsig_controls:
   - SC-28
   - SC-13

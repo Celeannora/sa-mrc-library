@@ -16,7 +16,97 @@ Versioning follows `MAJOR.MINOR.PATCH`:
 - [ ] Filled `.docx` MRC cards for all category leads
 - [ ] ISSM proposal template update to reflect JSIG non-tailorable control language
 - [ ] `generate-mrc.js` update to include JSIG fields (non-tailorable flag, ISSM auth ref, CCB CR number, SAPF entry approval)
-- [ ] PowerShell companion scripts: `Check-SplunkForwarders.ps1`, `Invoke-DCHealthCheck.ps1`, `Invoke-NTPAudit.ps1`, `Invoke-ADAccountAudit.ps1`, `Invoke-BitLockerADExport.ps1`, `Check-CertificateExpiry.ps1`
+- [ ] PowerShell companion scripts: `Check-SIEMForwarders.ps1`, `Invoke-DCHealthCheck.ps1`, `Invoke-NTPAudit.ps1`, `Invoke-ADAccountAudit.ps1`, `Invoke-BitLockerADExport.ps1`, `Check-CertificateExpiry.ps1`
+
+---
+
+## [3.4.0] — 2026-04-03
+### Summary
+Baseline normalization pass. This release reframes the entire library as a **platform-agnostic baseline** — non-network-specific best practice checks that will be tailored per site at a later time. All product-specific references in the 12 highest-specificity stubs have been replaced with `[SITE-DESIGNATED]` tokens. Four new gap cards have been added to close coverage deficiencies identified in a cross-category gap analysis. `TAILORING_GUIDE.md` has been added as the authoritative downstream tailoring reference. Total MRC count: 63.
+
+### Changed
+**Baseline Normalization — Body Content Pass (12 stubs):**  
+All product/tool-specific references replaced with `[SITE-DESIGNATED <TYPE> PLATFORM]` or equivalent generic tokens. Procedure steps now describe *what to do and the expected result* — not how to perform the action in a specific product. This applies to:
+
+| MRC | Category | Change Summary |
+|-----|---------|----------------|
+| MRC-0101-DA | 01 Audit & Log | Title changed from "Daily Splunk Agent Health..." to "Daily SIEM Agent Health and Log Forwarding Verification"; all Splunk product refs removed |
+| MRC-0103-SA | 01 Audit & Log | `dpkg`/`rpm`/hardcoded log path refs generalized |
+| MRC-0202-MO | 02 Patch & Vuln | WSUS / WSUSOffline / OU refs replaced with generic patch management tokens |
+| MRC-0204-MO | 02 Patch & Vuln | Nessus product refs replaced with `[SITE-DESIGNATED VULNERABILITY SCANNER]` |
+| MRC-0206-WK | 02 Patch & Vuln | Nessus product refs replaced with `[SITE-DESIGNATED VULNERABILITY SCANNER]` |
+| MRC-0301-DA | 03 AV / EDR | Trellix / ePO / DAT all replaced with `[SITE-DESIGNATED AV/EDR PLATFORM]`; `.docx` status preserved |
+| MRC-0501-MO | 05 Account & Access | AD / PowerShell cmdlet refs replaced with generic directory service tokens |
+| MRC-0801-MO | 08 Config & Baseline | SCC-specific navigation steps replaced with `[SITE-DESIGNATED SCAP TOOL]` |
+| MRC-1001-DA | 10 Identity & Directory | `repadmin` / `dcdiag` / AD-specific steps replaced with `[SITE-DESIGNATED DIRECTORY SERVICES PLATFORM]` |
+| MRC-2301-WK | 23 File & Storage | `Get-SmbShare` / BitLocker / SMB-specific cmdlets generalized |
+| MRC-2308-DA | 23 File & Storage | Hardcoded `/var/log/mrc` paths replaced with `[SITE-DESIGNATED LOG PATH]` tokens |
+| MRC-0402-MO | 04 Backup & Recovery | Veeam / `Start-VBRJob` refs replaced with `[SITE-DESIGNATED BACKUP PLATFORM]` |
+
+**Category 24 — Renamed:**
+- Directory renamed from `24-web-server-iis/` → `24-web-server/` (via `git mv`)
+- `categories/24-web-server/README.md` rewritten to be platform-generic
+- All four stub titles stripped of "IIS" prefix — now describe generic web server checks
+- `DOCUMENT_TRACKER.md` Category 24 label updated from "Web Server (IIS)" to "Web Server"
+
+**TECHNICAL_TASK_SCOPE.md — Orphaned ID Corrections:**
+- MRC-0201-MO corrected to MRC-0201-WK (7 instances) — card periodicity was WK not MO since v3.0.0
+- MRC-1002-MO corrected to MRC-1002-QR (2 instances) — card periodicity was QR not MO since v3.0.0
+
+**README.md — Baseline Philosophy Update:**
+- Version bumped to v3.4.0
+- Baseline philosophy blurb added (non-network-specific, tailored per site)
+- MRC category table counts updated to 63
+- `TAILORING_GUIDE.md` added to Quick Reference table
+- New "Baseline and Tailoring" section added covering token format and downstream tailoring workflow
+
+**DOCUMENT_TRACKER.md — v3.4.0 Updates:**
+- MRC-0101-DA title corrected to "Daily SIEM Agent Health and Log Forwarding Verification"
+- Four new card rows added (see Added section below)
+- Category 24 label updated from "Web Server (IIS)" to "Web Server"
+- Completion Summary: Cat 04 total 1→2, Cat 05 total 2→3, Cat 07 total 1→2, Cat 08 total 1→2
+- TOTAL updated from 59 → 63
+- v3.4.0 note added to footer
+- Version footer updated to v3.4.0
+
+### Added
+**New root-level document:**
+- `TAILORING_GUIDE.md` — Baseline philosophy reference and tailoring instructions
+  - Explains the baseline philosophy: library is platform-agnostic; tailoring happens per-site
+  - Full `[SITE-DESIGNATED]` token reference table (all tokens used across the library)
+  - Step-by-step tailoring workflow (fork → identify tokens → replace → review → authorize)
+  - Per-category tailoring notes identifying which stubs require the most site-specific input
+  - Non-tailorable control callout: AC-6(1), SA-22, SC-28 are JSIG-mandated and cannot be altered
+
+**New gap cards (4 stubs):**
+- `MRC-0402-MO` — Monthly Backup Restore Test and Recovery Verification (Cat 04)
+  - Closes the gap between daily backup health checks (MRC-0401-DA) and semi-annual DR exercises (MRC-1801-SA)
+  - Full restore verification: select backup set, execute restore to isolated test target, verify data integrity and application functionality
+  - JSIG controls: CP-9, CP-10, CP-10(2), AU-2, AU-9
+  - Cross-references: MRC-0401-DA, MRC-1801-SA, MRC-1901-MO
+- `MRC-0501-WK` — Weekly Account Activity and Anomalous Logon Review (Cat 05)
+  - Closes the gap between daily log review and monthly account audits — weekly logon anomaly detection
+  - Reviews authentication logs for failed logon spikes, off-hours access, dormant account activity, and privilege escalation events
+  - JSIG controls: AC-2, AC-6, AU-6, IA-4
+  - Cross-references: MRC-0101-DA, MRC-0501-MO, MRC-0502-MO
+- `MRC-0702-QR` — Quarterly Firewall Rule and ACL Baseline Verification (Cat 07)
+  - Closes the gap in Category 07 — no periodic rule-set audit existed alongside the daily alert review
+  - Full firewall rule set review against authorized baseline; identifies unauthorized or stale rules; documents ACL drift
+  - JSIG controls: SC-7, SC-7(5), CM-2, CM-3, CA-7
+  - Cross-references: MRC-0701-DA, MRC-1401-QR
+- `MRC-0802-MO` — Monthly Approved Software List Compliance Spot-Check (Cat 08)
+  - Closes the gap between monthly STIG/SCAP scans (MRC-0801-MO) and the need for a dedicated software authorization check
+  - Cross-references current installed software against the site-approved software list; flags unauthorized or EOL applications
+  - JSIG controls: CM-7, CM-11, CM-8, SA-22
+  - Cross-references: MRC-0801-MO, MRC-0103-SA, MRC-1701-MO
+
+### Repository State at v3.4.0
+- **63 MRC stubs** across 24 categories
+- **1 .docx** generated: MRC-0301-DA
+- **0 ISSM-approved** MRCs — library remains pre-authorization (all cards DRAFT)
+- **Baseline philosophy established** — all stubs platform-agnostic; `[SITE-DESIGNATED]` tokens used throughout
+- **Companion scripts:** `check-software-inventory.sh` (complete); `check-file-storage-hashes.sh` (PLACEHOLDER — not yet generated)
+- Next priority: per-site tailoring (clone/fork repo; replace `[SITE-DESIGNATED]` tokens per `TAILORING_GUIDE.md`)
 
 ---
 
@@ -34,7 +124,7 @@ Adds MRC-0103-SA — Daily Scripted Software Inventory Check with Change Audit L
   - Full change delta logged to `/var/log/mrc/software-inventory/delta-YYYYMMDD.log`
   - Supports `--init-baseline` (first run) and `--accept-baseline` (post-ISSM-authorized change acceptance) flags
   - JSIG controls: AU-2, AU-6, AU-9, CM-8, CM-8(1), SA-22, SI-7
-  - Cross-references: MRC-0101-DA (Splunk log forwarding), MRC-0801-MO (STIG/SCAP baseline), MRC-1701-MO (monthly software audit)
+  - Cross-references: MRC-0101-DA (SIEM log forwarding), MRC-0801-MO (STIG/SCAP baseline), MRC-1701-MO (monthly software audit)
 
 **Scripts:**
 - `scripts/check-software-inventory.sh` — Linux Bash companion script for MRC-0103-SA

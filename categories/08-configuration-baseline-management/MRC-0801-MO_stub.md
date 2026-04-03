@@ -7,7 +7,7 @@ est_time: "2–4 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "SCAP Compliance Checker (SCC), STIG Viewer, DISA STIG Library, Nessus/ACAS (compliance plugins)"
+tool: "STIG/SCAP compliance checker ([SITE-DESIGNATED TOOL — e.g., SCC, SCAP-compatible scanner]), STIG viewer, DISA STIG benchmark library, vulnerability scanner compliance plugins"
 jsig_controls:
   - CM-6
   - CM-7
@@ -30,8 +30,8 @@ docx_status: NOT STARTED
 **What STIG compliance means:**
 DISA Security Technical Implementation Guides (STIGs) define the required secure configuration for every OS, application, and device in the DoD environment. A STIG check verifies the system is configured per its approved baseline. Deviations from the STIG — called findings — are categorized CAT I (critical), CAT II (high), or CAT III (medium/low).
 
-**SCAP Compliance Checker (SCC):**
-SCC is the DoD-standard automated tool for running STIG checks. It reads SCAP benchmark content and evaluates each system against the required settings, producing a results file that identifies every open, closed, and not-applicable finding.
+**SCAP Compliance Checker ([SITE-DESIGNATED TOOL — e.g., SCC, SCAP-compatible scanner]):**
+The DoD-approved automated STIG scanning tool reads SCAP benchmark content and evaluates each system against the required settings, producing a results file that identifies every open, closed, and not-applicable finding.
 
 **Configuration drift:**
 Over time, patches, software installs, and administrative changes can alter a system's configuration away from its approved STIG baseline. This MRC detects that drift monthly so it can be corrected before it becomes an audit finding.
@@ -47,7 +47,7 @@ Some STIG checks must be marked N/A or given a custom rule for this specific env
 
 > ⚠️ **DO NOT APPLY STIG CHANGES WITHOUT AUTHORIZATION:** SCC findings are documentation — not authorization to change settings. Any STIG fix that modifies a production system requires a CCB CR and ISSM authorization first.
 
-> ⚠️ **SCC TOOL MUST BE CURRENT:** SCC and SCAP benchmark content must be transferred in via authorized media from the DISA IASE website (external workstation). Outdated benchmarks produce inaccurate results.
+> ⚠️ **STIG/SCAP TOOL MUST BE CURRENT:** The STIG/SCAP compliance tool and benchmark content must be transferred in via authorized media from the DISA IASE website (external workstation). Outdated benchmarks produce inaccurate results.
 
 ---
 
@@ -55,7 +55,7 @@ Some STIG checks must be marked N/A or given a custom rule for this specific env
 
 | Item | Details |
 |------|---------|
-| SCC (SCAP Compliance Checker) | Current version from DISA IASE — transferred in via authorized media |
+| [SITE-DESIGNATED TOOL — e.g., SCC] | Current version from DISA IASE or equivalent — transferred in via authorized media |
 | STIG Viewer | DISA IASE — for reviewing individual check findings |
 | SCAP benchmark content | OS and application benchmarks matching environment (transferred in) |
 | Authorized transfer media | For SCC and benchmark import |
@@ -73,7 +73,7 @@ Some STIG checks must be marked N/A or given a custom rule for this specific env
 | SCAP Compliance Checker (SCC) | https://public.cyber.mil/stigs/scap/ (external) |
 | NIST SP 800-70 Rev 4 — SCAP | https://csrc.nist.gov/publications/detail/sp/800-70/rev-4/final |
 | STIG Variance Log | SA Document Repository |
-| MRC-0201-WK | Nessus results — cross-reference for overlapping findings |
+| MRC-0201-WK | Vulnerability scan results — cross-reference for overlapping findings |
 
 ---
 
@@ -84,7 +84,7 @@ Some STIG checks must be marked N/A or given a custom rule for this specific env
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
 | 1 | Download current SCC and applicable SCAP benchmarks on external workstation | DISA IASE → Downloads → SCC, SCAP Benchmarks | Current versions downloaded; record version numbers |
-| 2 | Hash verify downloaded files | `Get-FileHash <file> -Algorithm SHA256` vs. DISA-published hashes | Hashes match — proceed |
+| 2 | Hash verify downloaded files | Compute SHA-256 hash of downloaded files using site-available hash utility and compare to DISA-published hashes | Hashes match — proceed |
 | 3 | Transfer to SAPF via authorized media + inbound scan | Per SA-BASELINE.md Appendix B | Zero detections — proceed |
 | 4 | Install/update SCC and benchmark content | Run SCC installer; import XCCDF benchmark files | SCC version updated; benchmarks loaded |
 
@@ -92,17 +92,17 @@ Some STIG checks must be marked N/A or given a custom rule for this specific env
 
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
-| 5 | Open SCC | Start → SCC application | SCC dashboard |
-| 6 | Configure scan targets | SCC → Targets → Add all managed hosts (or scan groups) | All hosts added |
-| 7 | Select applicable SCAP benchmarks for each host | SCC → Content → Select: Windows Server STIG, Windows 10/11 STIG, applicable application STIGs | Correct benchmarks mapped to correct host types |
-| 8 | Run scan | SCC → Scan → Start | Scan completes on all hosts — results generated |
-| 9 | Export scan results | SCC → Results → Export → XCCDF Results + HTML Summary | Results file saved |
+| 5 | Open STIG/SCAP compliance tool | Launch [SITE-DESIGNATED TOOL — e.g., SCC] | Tool dashboard loads |
+| 6 | Configure scan targets | Tool → [SITE-SPECIFIC NAV: targets or scope settings] → add all managed hosts or scan groups | All hosts added |
+| 7 | Select applicable SCAP benchmarks for each host | Tool → [SITE-SPECIFIC NAV: content or benchmarks] → select applicable OS and application STIGs for the deployed environment | Correct benchmarks mapped to correct host types |
+| 8 | Run scan | Tool → [SITE-SPECIFIC: start or launch scan] | Scan completes on all hosts — results generated |
+| 9 | Export scan results | Tool → [SITE-SPECIFIC: results → export] → XCCDF Results + HTML Summary | Results file saved |
 
 ### Phase 3 — Drift Analysis and Variance Documentation
 
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
-| 10 | Open HTML summary — review all CAT I findings | SCC Results → HTML → Filter: CAT I / FAIL | All open CAT I findings identified |
+| 10 | Open HTML summary — review all CAT I findings | Open exported HTML report → filter or sort for CAT I / FAIL | All open CAT I findings identified |
 | 11 | Any CAT I finding: document in Findings Log (Section 9) and notify ISSM same-day | | ISSM notified; POA&M entry created |
 | 12 | Review all CAT II findings | Filter: CAT II / FAIL | All open CAT II findings identified and documented |
 | 13 | Compare current results to prior month's scan | Side-by-side XCCDF results | New findings (OPEN this month, not prior) = drift detected |

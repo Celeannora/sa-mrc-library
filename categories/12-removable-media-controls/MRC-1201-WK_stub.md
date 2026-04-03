@@ -7,7 +7,7 @@ est_time: "30–45 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Trellix ePO DLP Module, PowerShell, Media Inventory Log"
+tool: "Endpoint protection DLP module console ([SITE-DESIGNATED DLP/AV PLATFORM]), removable media policy enforcement interface, media inventory log"
 jsig_controls:
   - MP-7
   - MP-4

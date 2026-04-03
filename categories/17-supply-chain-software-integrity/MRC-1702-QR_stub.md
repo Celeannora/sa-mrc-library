@@ -7,7 +7,7 @@ est_time: "3–4 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "PowerShell, SCCM, ACAS, File Integrity Monitoring, Sigcheck/Sysinternals"
+tool: "Software inventory or CMDB tool ([SITE-DESIGNATED TOOL]), vulnerability scanner, file integrity monitoring tool ([SITE-DESIGNATED TOOL]), code/binary signing verification utility"
 jsig_controls:
   - SA-22
   - SI-7

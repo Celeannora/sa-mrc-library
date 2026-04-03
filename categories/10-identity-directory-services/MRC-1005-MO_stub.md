@@ -8,7 +8,7 @@ est_time: "01:00"
 rin: MO-ADCS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Certification Authority MMC (certsrv.msc), Certificate Templates Console (certtmpl.msc), PKIView.msc, PowerShell (PKI module), Event Viewer"
+tool: "Certificate Authority management console ([SITE-DESIGNATED CA PLATFORM]), certificate template console, PKI health viewer, OS event log"
 jsig_controls: "SC-12, SC-17, IA-5(2), CM-6, AU-9, IA-3"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

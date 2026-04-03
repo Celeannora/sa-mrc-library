@@ -7,7 +7,7 @@ est_time: "1.5–2.5 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Trellix ePolicy Orchestrator (ePO), Trellix ENS (Endpoint Security), PowerShell, transfer media"
+tool: "Endpoint protection management console ([SITE-DESIGNATED AV/EDR PLATFORM]), policy management interface, authorized transfer media"
 jsig_controls:
   - SI-3
   - SI-4

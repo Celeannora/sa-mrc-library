@@ -8,7 +8,7 @@ est_time: "00:45"
 rin: MO-SS-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Server Manager > File and Storage Services > Volumes/Disks, PowerShell (Storage module), iSCSI Initiator (iscsicpl.exe), Storage Spaces (if deployed), Disk Management (diskmgmt.msc), Event Viewer"
+tool: "Storage management console or CLI ([SITE-DESIGNATED STORAGE PLATFORM]), OOB management interface, disk/volume management utility, OS event log"
 jsig_controls: "SC-28, CM-6, CM-7, CP-9, AU-9, AC-3"
 non_tailorable: "N/A — SC-28 applies to volumes hosting classified data (see MRC-2201-WK); verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

@@ -7,7 +7,7 @@ est_time: "2–4 hours"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "UPS Management Software, UPS Console / Display Panel, Generator Control Panel, Physical inspection"
+tool: "UPS management software or display panel ([SITE-DESIGNATED UPS PLATFORM]), generator control panel (if applicable), physical inspection"
 jsig_controls:
   - CP-8
   - PE-11

@@ -8,7 +8,7 @@ est_time: "00:25"
 rin: MO-DEDUP-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "PowerShell (Deduplication module), Server Manager > File and Storage Services > Volumes, Event Viewer"
+tool: "Data deduplication management console or CLI ([SITE-DESIGNATED DEDUP PLATFORM]), storage management console, OS event log"
 jsig_controls: "CM-6, CP-9, SC-28, AU-9, SI-7"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

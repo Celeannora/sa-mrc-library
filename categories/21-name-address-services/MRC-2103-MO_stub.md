@@ -8,7 +8,7 @@ est_time: "00:45"
 rin: MO-IPAM-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Windows IPAM (Server Manager > IPAM), PowerShell (IpamServer module), DHCP Manager (dhcpmgmt.msc), DNS Manager (dnsmgmt.msc)"
+tool: "IPAM management console or CLI ([SITE-DESIGNATED IPAM PLATFORM]), DHCP management console, DNS management console"
 jsig_controls: "CM-6, CM-7, AC-3, AC-17, AU-9, SC-20, SC-22, SI-12"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

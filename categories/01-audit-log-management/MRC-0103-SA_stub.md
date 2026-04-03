@@ -7,7 +7,7 @@ est_time: "20–30 minutes"
 rin: ""
 revision: "Rev 1.0"
 classification: "[CLASSIFICATION]"
-tool: "Bash (check-software-inventory.sh), dpkg / rpm, systemctl, sha256sum, auditd / /var/log/auth.log"
+tool: "Scripted software inventory tool ([SITE-DESIGNATED SCRIPT PLATFORM / OS]), package enumeration utility, cryptographic hash utility, OS audit facility"
 jsig_controls:
   - AU-2
   - AU-6
@@ -40,16 +40,16 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 3. The full audit trail — who ran the script, when, and what changed — is captured to satisfy JSIG AU-2 and AU-6 accountability requirements
 4. Unauthorized software installations (a potential insider threat indicator) are detected within one duty day
 
-**What the script does (`scripts/check-software-inventory.sh`):**
-- Enumerates all installed packages using `dpkg --get-selections` (Debian/Ubuntu) or `rpm -qa` (RHEL/CentOS/Rocky)
-- Computes an SHA-256 hash of the full package list for integrity verification (SI-7)
-- Compares against the previous baseline snapshot stored in `/var/log/mrc/software-inventory/`
+**What the script does (`scripts/check-software-inventory.[SITE-SCRIPT-EXT]`):**
+- Enumerates all installed packages using the OS-native package enumeration utility (e.g., `dpkg`, `rpm`, `Get-Package`, or equivalent for the deployed OS)
+- Computes a cryptographic hash of the full package list for integrity verification (SI-7)
+- Compares against the previous baseline snapshot stored in the designated log directory ([SITE-DESIGNATED LOG PATH])
 - Logs any delta (installed, removed, or version-changed packages) to a timestamped change log
-- Records the executing user's identity (`$USER` / `$SUDO_USER`), hostname, and timestamp in each log entry for AU-6 accountability
-- Exits with a non-zero code if unauthorized changes are detected, suitable for cron-based alerting
+- Records the executing user's identity, hostname, and timestamp in each log entry for AU-6 accountability
+- Exits with a non-zero code if unauthorized changes are detected, suitable for scheduled task or cron-based alerting
 
 **Script reference:**
-`scripts/check-software-inventory.sh` — available in the MRC library repository. Deploy to each managed host before first execution. Requires root or sudo privileges.
+`scripts/check-software-inventory.[SITE-SCRIPT-EXT]` — available in the MRC library repository. Deploy to each managed host before first execution. Requires elevated privileges (root/sudo or local administrator equivalent).
 
 ---
 
@@ -61,7 +61,7 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 
 > ⚠️ **SA-22 REPORTING REQUIREMENT:** Any software package identified as end-of-life (EOL), unsupported by the vendor, or not listed in the system's approved software list must be reported to the ISSM within the same maintenance cycle. Do not defer SA-22 findings.
 
-> ⚠️ **AU-9 COMPLIANCE — PROTECT AUDIT LOGS:** The change audit log directory (`/var/log/mrc/software-inventory/`) must be protected from modification by non-privileged users. Do not delete, alter, or rotate logs outside of ISSM-authorized retention procedures (AU-11).
+> ⚠️ **AU-9 COMPLIANCE — PROTECT AUDIT LOGS:** The change audit log directory ([SITE-DESIGNATED LOG PATH]) must be protected from modification by non-privileged users. Do not delete, alter, or rotate logs outside of ISSM-authorized retention procedures (AU-11).
 
 ---
 
@@ -69,12 +69,12 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 
 | Item | Details |
 |------|---------|
-| `check-software-inventory.sh` | Library script — `scripts/check-software-inventory.sh` — deployed to target host |
-| Root / sudo access | Required to enumerate all system packages and write to `/var/log/mrc/` |
-| Bash 4.0+ | Script runtime — standard on all modern Linux distributions |
-| `dpkg` or `rpm` | Package enumeration — automatically detected by the script |
-| `sha256sum` | Integrity hashing — standard coreutils |
-| `diff` | Change delta computation — standard coreutils |
+| `check-software-inventory.[EXT]` | Library script — `scripts/check-software-inventory.[SITE-SCRIPT-EXT]` — deployed to target host |
+| Elevated privileges | Required to enumerate all system packages and write to the designated log directory |
+| Script runtime environment | Appropriate runtime for the deployed OS (e.g., Bash, PowerShell, or equivalent) |
+| OS package enumeration utility | Native to the deployed OS — automatically selected by the script |
+| Cryptographic hash utility | Standard OS utility (e.g., sha256sum, Get-FileHash, or equivalent) |
+| Change delta utility | Standard OS utility for comparing file contents (e.g., diff or equivalent) |
 | Approved Software List (ASL) | ISSM-maintained list of authorized software for this IS — SA Document Repository |
 | MRC Sign-Off Block | Signed by SA (and ISSM/ISSO if findings present) after completion |
 
@@ -91,7 +91,7 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 | Approved Software List (ASL) | SA Document Repository / ISSM Binder |
 | System Security Plan (SSP) — Software Inventory Section | ISSM SharePoint |
 | `scripts/check-software-inventory.sh` | MRC Library Repository — `scripts/` directory |
-| MRC-0101-DA | Daily Splunk Agent Health and Log Forwarding Verification (cross-reference) |
+| MRC-0101-DA | Daily SIEM Agent Health and Log Forwarding Verification (cross-reference) |
 | MRC-0801-MO | Monthly Configuration Baseline Review (cross-reference) |
 
 ---
@@ -109,12 +109,12 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 ## 6. Prerequisites (JSIG MA-2)
 
 - [ ] ISSM written authorization on file for this maintenance cycle
-- [ ] `check-software-inventory.sh` deployed to all managed hosts and verified executable (`chmod +x`)
-- [ ] Log directory initialized: `/var/log/mrc/software-inventory/` exists with correct permissions
-- [ ] Baseline snapshot from previous cycle present in log directory (first run: run script with `--init-baseline` flag to establish baseline)
+- [ ] `check-software-inventory.[SITE-SCRIPT-EXT]` deployed to all managed hosts and verified executable
+- [ ] Log directory initialized at [SITE-DESIGNATED LOG PATH] with correct permissions
+- [ ] Baseline snapshot from previous cycle present in log directory (first run: initialize baseline per script instructions)
 - [ ] Approved Software List (ASL) current and accessible
-- [ ] Root / sudo access confirmed for each target host
-- [ ] auditd running and configured (confirm with `systemctl status auditd`)
+- [ ] Elevated privileges confirmed for each target host
+- [ ] OS audit facility (auditd, Windows Audit Policy, or equivalent) running and configured
 
 ---
 
@@ -123,18 +123,18 @@ Manual software inventory is error-prone and inconsistent. A scripted approach e
 | Step | Action | Nav Path / Command | Expected Result |
 |------|--------|--------------------|-----------------|
 | 1 | Log into the managed host as authorized SA account | SSH or console login → authenticate with CAC / SA credentials | Shell prompt for authorized SA account |
-| 2 | Verify the script is present and executable | `ls -la /opt/mrc/scripts/check-software-inventory.sh` | File present; `-rwxr-xr-x` permissions; owner: root |
-| 3 | Run the software inventory check script | `sudo /opt/mrc/scripts/check-software-inventory.sh` | Script executes; outputs: current timestamp, executing user identity, package count, and inventory hash |
+| 2 | Verify the script is present and executable | Navigate to [SITE-DESIGNATED SCRIPT PATH] → verify the script file is present and has execute permissions | File present with correct permissions and ownership |
+| 3 | Run the software inventory check script | Execute the script at [SITE-DESIGNATED SCRIPT PATH] with elevated privileges | Script executes; outputs: current timestamp, executing user identity, package count, and inventory hash |
 | 4 | Review script output — note PASS / CHANGE / FAIL status | Script console output | `STATUS: PASS — No changes detected` or `STATUS: CHANGE — [N] package changes detected` |
-| 5 | If STATUS: CHANGE — review the delta log | `sudo cat /var/log/mrc/software-inventory/delta-$(date +%Y%m%d).log` | Lists each added, removed, or version-changed package with timestamps |
+| 5 | If STATUS: CHANGE — review the delta log | Navigate to [SITE-DESIGNATED LOG PATH] → open the delta log for today's date | Lists each added, removed, or version-changed package with timestamps |
 | 6 | Cross-reference any detected changes against the Approved Software List (ASL) | ASL document + delta log | Each changed package is either: (a) authorized change — document in Step 7, or (b) unauthorized — document finding in Section 11 |
 | 7 | Document authorized changes (if any) | Complete Authorized Change Log (Section 9) | All authorized software changes recorded with CCB/CR reference or ISSM approval reference |
-| 8 | Verify SHA-256 hash of current inventory is recorded in log | `sudo tail -5 /var/log/mrc/software-inventory/inventory-$(date +%Y%m%d).log` | Hash line present: `SHA256: [hash]` |
-| 9 | Confirm executing user identity is recorded in audit log | `sudo grep "OPERATOR:" /var/log/mrc/software-inventory/inventory-$(date +%Y%m%d).log` | Line present: `OPERATOR: [sa-username] @ [hostname] — [timestamp]` |
-| 10 | Verify auditd recorded the script execution | `sudo ausearch -c check-software-inv --start today` | auditd entries present for script execution |
+| 8 | Verify cryptographic hash of current inventory is recorded in log | Navigate to [SITE-DESIGNATED LOG PATH] → open today's inventory log → scroll to end | Hash line present: `SHA256: [hash]` (or equivalent hash format) |
+| 9 | Confirm executing user identity is recorded in audit log | Open today's inventory log → search for OPERATOR entry | Line present: `OPERATOR: [sa-username] @ [hostname] — [timestamp]` |
+| 10 | Verify OS audit facility recorded the script execution | Use the site-designated OS audit query tool (auditd ausearch, Windows Event Viewer, or equivalent) → search for script execution events today | Audit entries present for script execution |
 | 11 | Repeat Steps 2–10 for each managed host in scope | Per host | All hosts in Section 8 populated |
 | 12 | Notify ISSM of any unauthorized software findings | Phone / secure message per site SOP | ISSM notified; response documented in Section 11 |
-| 13 | Accept new baseline (authorized changes only) | `sudo /opt/mrc/scripts/check-software-inventory.sh --accept-baseline` | Script confirms: `Baseline updated by [username] at [timestamp]` |
+| 13 | Accept new baseline (authorized changes only) | Execute the script at [SITE-DESIGNATED SCRIPT PATH] with the baseline-accept flag or parameter per script documentation | Script confirms: `Baseline updated by [username] at [timestamp]` |
 | 14 | Complete Host Inventory Summary table (Section 8) | | All rows populated |
 | 15 | Complete Findings Summary and Sign-Off block (Sections 11–12) | | SA signature obtained; ISSM signature obtained if findings present |
 

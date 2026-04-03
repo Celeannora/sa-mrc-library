@@ -8,7 +8,7 @@ est_time: "00:15"
 rin: DA-PHY-001
 revision: Rev 1.1
 classification: "[CLASSIFICATION]"
-tool: "Physical access log (paper or electronic — PACS), tamper-evident seals, UPS display panel, rack fault indicator lights"
+tool: "Physical access log (paper or electronic PACS), tamper-evident seal inspection, UPS display panel, rack fault indicator lights"
 jsig_controls: "PE-2, PE-3, PE-6, PE-8, MA-5, AU-9"
 non_tailorable: "N/A — verify against site-specific JSIG annex"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"

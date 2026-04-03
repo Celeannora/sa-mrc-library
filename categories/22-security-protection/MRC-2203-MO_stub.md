@@ -8,7 +8,7 @@ est_time: "00:40"
 rin: MO-DHA-001
 revision: Rev 1.0
 classification: "[CLASSIFICATION]"
-tool: "Device Health Attestation (DHA) Service / Microsoft Intune / MDM console (if deployed), PowerShell (TPM module, Get-Tpm, Confirm-SecureBootUEFI), TPM Management Console (tpm.msc), Event Viewer"
+tool: "Device health attestation service console ([SITE-DESIGNATED MDM/DHA PLATFORM]), TPM management utility, OS event log, firmware/UEFI Secure Boot verification tool"
 jsig_controls: "SI-7, SI-7(1), IA-3, CM-6, CM-7, SC-28, AU-9"
 non_tailorable: "N/A — No non-tailorable controls in this category (verify against site-specific JSIG annex; SC-28 BitLocker state is reported by DHA and IS non-tailorable)"
 issm_auth_ref: "[ISSM Written Auth Reference # — Date]"
